@@ -17,7 +17,7 @@ class Home extends CI_Controller{
         // $data['products'] = $this->db->get('products')->result();
         // $data['categories'] = $this->db->get('categories')->result();
 
-    
+        $data['jobList'] =$this->modAdmin->jobList();
         if($this->session->userdata('uId')) {
 
             $data['profiles'] = $this->modUser->checkProfile(['uId' => $this->session->userdata('uId')]) ->row_array();
@@ -33,7 +33,7 @@ class Home extends CI_Controller{
             $this->load->view('templates/header');
             $this->load->view('templates/topbar');
             $this->load->view('templates/slider');
-            $this->load->view('templates/service');
+            $this->load->view('templates/service', $data);
             $this->load->view('templates/footer');
         }
     }
