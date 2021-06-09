@@ -29,7 +29,7 @@ class JobList extends CI_Controller {
         else {
             $this->load->view('templates/header');
             $this->load->view('templates/topbar');
-            $this->load->view('templates/list');
+            $this->load->view('templates/list', $data);
             $this->load->view('templates/footer');
         }
     }
