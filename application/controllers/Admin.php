@@ -18,6 +18,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 $data['total_customers'] = $this->modAdmin->count_all_customers();
                 $data['total_products'] = $this->modAdmin->count_all_products();
                 $data['profiles'] = $this->modAdmin->checkProfile(['aId' => $this->session->userdata('aId')]) ->row_array();
+                $data['jobRecent'] = $this->modAdmin->jobRecent();
 
                 $this->load->view('admin/header', $data);                
                 $this->load->view('admin/home', $data);                

@@ -216,8 +216,39 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $this->db->select('*');
             $this->db->from('products');
             $this->db->join('models', 'productId=pId');
+            $this->db->limit('4');
             $query = $this->db->get();
             return $query->result();
         }
 
+        public function jobRecent()
+        {
+            $this->db->select('*');
+            $this->db->from('products');
+            $this->db->join('models', 'productId=pId');
+            $this->db->order_by('mId', 'desc');
+            $this->db->limit('4');
+            $query = $this->db->get();
+            return $query->result();
+        }
+
+        public function jobListings()
+        {
+            $this->db->select('*');
+            $this->db->from('products');
+            $this->db->join('models', 'productId=pId');
+            $query = $this->db->get();
+            $result = $query->result_array();
+            return $result;
+
+        }
+
+        public function jobListing()
+        {
+            $this->db->select('*');
+            $this->db->from('products');
+            $query = $this->db->get();
+            $result = $query->result_array();
+            return $result;
+        }
     }

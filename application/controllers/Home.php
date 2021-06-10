@@ -18,6 +18,7 @@ class Home extends CI_Controller{
         // $data['categories'] = $this->db->get('categories')->result();
 
         $data['jobList'] =$this->modAdmin->jobList();
+        $data['jobListing'] =$this->modAdmin->jobListing();
         if($this->session->userdata('uId')) {
 
             $data['profiles'] = $this->modUser->checkProfile(['uId' => $this->session->userdata('uId')]) ->row_array();
