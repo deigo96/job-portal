@@ -135,8 +135,6 @@
                                                         <th>Id</th>
                                                         <th>Name</th>
                                                         <th>Address</th>
-                                                        <th>Edit</th>
-                                                        <th>Delete</th>
                                                     </tr>
                                                 </thead>
                                                 <?php 
@@ -166,13 +164,14 @@
                                                         </td> -->
                                                     </tr>
                                                 <?php endforeach; ?>
-                                            </table>
-                                            <?php echo $links;?>            
+                                            </table>         
                                             <?php else: ?>
                                                 Users not available
                                         <?php endif; ?>
                                     </div>
                                 </div>
+                                
+                                <p><?php echo $links;?></p>   
                             </div>
                         </div>
                     </div>

@@ -6,7 +6,7 @@
                     <div class="col-lg-3 col-md-2">
                         <!-- Logo -->
                         <div class="logo" ">
-                            <a href="index.html"><img src="<?= base_url('assets/'); ?>assets/img/logo/logo.png" alt="" style="width: auto;"></a>
+                            <a href="<?= site_url('home'); ?>"><img src="<?= base_url('assets/'); ?>assets/img/logo/logo.png" alt="" style="width: auto;"></a>
                         </div>  
                     </div>
                     <div class="col-lg-9 col-md-9">
@@ -20,10 +20,10 @@
                                         <li><a href="<?php echo site_url().'about'; ?>">About</a></li>
                                         <li><a href="#">Page</a>
                                             <ul class="submenu">
-                                                <li><a href="blog.html">Blog</a></li>
-                                                <li><a href="single-blog.html">Blog Details</a></li>
-                                                <li><a href="elements.html">Elements</a></li>
-                                                <li><a href="<?php echo site_url().'jobdetails'; ?>">job Details</a></li>
+                                                <li><a href="#">Blog</a></li>
+                                                <li><a href="#">Blog Details</a></li>
+                                                <li><a href="#">Elements</a></li>
+                                                <li><a href="#">job Details</a></li>
                                             </ul>
                                         </li>
                                         <li><a href="<?php echo site_url().'contact'; ?>">Contact</a></li>

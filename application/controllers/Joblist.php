@@ -46,10 +46,8 @@ class JobList extends CI_Controller {
             $this->load->view('templates/footer');
         }
         else {
-            $this->load->view('templates/header');
-            $this->load->view('templates/topbar');
-            $this->load->view('templates/jobdetails');
-            $this->load->view('templates/footer');
+            $this->session->set_flashdata('error', 'Please Login First to Continue');
+            redirect('home/login');
         }
     }
 }

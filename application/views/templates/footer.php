@@ -22,11 +22,10 @@
                             <h4>Contact Info</h4>
                             <ul>
                                 <li>
-                                <p>Address :Your address goes
-                                    here, your demo address.</p>
+                                <p>Address :Perum KSB Blok J13 No.20</p>
                                 </li>
-                                <li><a href="#">Phone : +8880 44338899</a></li>
-                                <li><a href="#">Email : info@colorlib.com</a></li>
+                                <li><a href="#">Phone : +62 82135277397</a></li>
+                                <li><a href="#">Email : deigosiahaan@gmail.com</a></li>
                             </ul>
                         </div>
 
@@ -37,8 +36,8 @@
                         <div class="footer-tittle">
                             <h4>Important Link</h4>
                             <ul>
-                                <li><a href="#"> View Project</a></li>
-                                <li><a href="#">Contact Us</a></li>
+                                <li><a href="https://github.com/deigo96/job-portal.git" target="_blank"> View Project</a></li>
+                                <li><a href="<?= base_url('contact'); ?>">Contact Us</a></li>
                                 <li><a href="#">Testimonial</a></li>
                                 <li><a href="#">Proparties</a></li>
                                 <li><a href="#">Support</a></li>

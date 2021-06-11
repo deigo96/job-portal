@@ -130,27 +130,38 @@
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
-        <section class="content align-items-center">
-            <div class="container">
-                <div class="row pt-2">
-                    <div class="col-md-6 offset-3">
-                        <?php if($this->session->flashdata('class')): ?>
-                            <div class="alert <?php echo $this->session->flashdata('class') ?> alert-dimissible" role="alert">
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"></span></button>
-                                <?php echo $this->session->flashdata('message'); ?>
+        <section class="content">
+            <div class="row">
+                <div class="col-md-6 offset-3 mt-3">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Add New Category</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
                             </div>
-                        <?php endif ; ?>
-                        <?php echo form_open_multipart('admin/addCategory', '', '') ?>
-                            <div class="form-group">
-                                <?php echo form_input('categoryName', '', 'class="form-control"'); ?>
-                            </div>
-                            <div class="form-group">
-                                <?php echo form_upload('catDp', '',''); ?>
-                            </div>
-                            <div class="form-group">
-                                <?php echo form_submit('Add Category', 'Add Category', 'class="btn btn-primary"') ?>
-                            </div>
-                        <?php echo form_close(); ?>
+                        </div>
+                        <div class="card-body">
+                            <?php if($this->session->flashdata('class')): ?>
+                                <div class="alert <?php echo $this->session->flashdata('class') ?> alert-dimissible" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"></span></button>
+                                    <?php echo $this->session->flashdata('message'); ?>
+                                </div>
+                            <?php endif ; ?>
+                            <?php echo form_open_multipart('admin/addCategory', '', '') ?>
+                                <div class="form-group">
+                                    <label for="inputName">Category Name</label>
+                                    <?php echo form_input('categoryName', '', 'class="form-control"'); ?>
+                                </div>
+                                <div class="form-group">
+                                    <?php echo form_upload('catDp', '','class="form-control custom-file"'); ?>
+                                </div>
+                                <div class="form-group">
+                                    <?php echo form_submit('Add Category', 'Add Category', 'class="btn btn-primary"') ?>
+                                </div>
+                            <?php echo form_close(); ?>
+                        </div>
                     </div>
                 </div>
             </div>

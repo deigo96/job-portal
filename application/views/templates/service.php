@@ -150,11 +150,11 @@
                                 <a href="job_details.html"><img src="assets/img/icon/job-list1.png" alt=""></a>
                             </div>
                             <div class="job-tittle">
-                                <a href="job_details.html"><h4><?= $job->mName ?></h4></a>
+                                <a href="job_details.html"><h4><?= $job->pName ?></h4></a>
                                 <ul>
-                                    <li>Creative Agency</li>
+                                    <li><?= $job->mName ?></li>
                                     <li><i class="fas fa-map-marker-alt"></i><?= $job->location ?></li>
-                                    <li><?= $job->price ?></li>
+                                    <li>Rp.<?= $job->price ?></li>
                                 </ul>
                             </div>
                         </div>

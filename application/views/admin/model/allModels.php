@@ -137,7 +137,7 @@
                     <div class="col-12">
                         <div class="card card-primary">
                             <div class="card-header">
-                                <h2>All Models</h2>
+                                <h3 class="card-title">All Jobs</h3>
                             </div>
                             <?php if($this->session->flashdata('class')): ?>
                             <div class="alert <?php echo $this->session->flashdata('class') ?> alert-dimissible" role="alert">
@@ -145,48 +145,49 @@
                                 <?php echo $this->session->flashdata('message'); ?>
                             </div>
                             <?php endif ; ?>
-                            <div class="card-body">
-                                <div>
+                            <div class="card-body pb-0">
+                                <div class= "table">
                                     <div class="btn-group w-100 mb-2">
                                         <?php if($allModels): ?>
-                                            <table class="table table-bordered text-center">
+                                            <table class="table">
                                                 <thead>
                                                     <tr>
                                                         <th>No</th>
                                                         <th>Id</th>
                                                         <th>Model</th>
-                                                        <th>Description</th>
-                                                        <th>Edit</th>
-                                                        <th>Delete</th>
+                                                        <th>Job</th>
+                                                        <th></th>
                                                     </tr>
                                                 </thead>
-                                                <?php 
-                                                    $i = 0;
-                                                    foreach ($allModels as $model): 
-                                                    $i++;
-                                                ?>
-                                                    <tr>
-                                                        <td>
-                                                            <?php echo $i ?>
-                                                        </td>
-                                                        <td>
-                                                            <?php echo $model->mId ?>
-                                                        </td>
-                                                        <td>
-                                                            <?php echo $model->mName ?>
-                                                        </td>
-                                                        <td>
-                                                            <?php echo $model->mDescription ?>
-                                                        </td>
-                                                        <td>
-                                                            <a href="<?php echo site_url('admin/editModel/'. $model->mId) ?>" class="btn btn-primary btn-sm"><i class="fas fa-pencil-alt"></i> Edit</a>
-                                                        </td>
-                                                        <td>
-                                                            <!-- <a href="javascript:void(0)" class="btn btn-danger delcat" data-id="<?php echo $category->mId ?>" data-text="<?php echo $this->encryption->encrypt($category->mId) ?>">Delete</a> -->
-                                                            <a href="<?php echo site_url('admin/deleteModel/'.$model->mId) ?>" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Delete</a>
-                                                        </td>
-                                                    </tr>
-                                                <?php endforeach; ?>
+                                                <tbody>
+                                                    <?php 
+                                                        $i = 0;
+                                                        foreach ($allModels as $model): 
+                                                        $i++;
+                                                    ?>
+                                                        <tr>
+                                                            <td>
+                                                                <?php echo $i ?>
+                                                            </td>
+                                                            <td>
+                                                                <?php echo $model->mId ?>
+                                                            </td>
+                                                            <td>
+                                                                <?php echo $model->mName ?>
+                                                            </td>
+                                                            <td>
+                                                                <?php echo $model->pName ?>
+                                                            </td>
+                                                            <td class="text-right py-0 align-middle">
+                                                                <div class="btn-group btn-group-sm">
+                                                                    <a href="<?php echo site_url('admin/editModel/'. $model->mId) ?>" class="btn btn-primary btn-sm"><i class="fas fa-pencil-alt"></i> Edit</a>
+                                                                    <!-- <a href="javascript:void(0)" class="btn btn-danger delcat" data-id="<?php echo $category->mId ?>" data-text="<?php echo $this->encryption->encrypt($category->mId) ?>">Delete</a> -->
+                                                                    <a href="<?php echo site_url('admin/deleteModel/'.$model->mId) ?>" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Delete</a>
+                                                                </div> 
+                                                            </td>
+                                                        </tr>
+                                                    <?php endforeach; ?>
+                                                </tbody>
                                             </table>
                                             <?php echo $links;?>            
                                             <?php else: ?>

@@ -445,6 +445,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             if(adminLoggedIn()){
                 $data['mName'] = $this->input->post('modelName', true);
                 $data['mDescription'] = $this->input->post('md', true);
+                $data['location'] = $this->input->post('location', true);
                 $data['productId'] = $this->input->post('productId', true);
                 $data['price'] = $this->input->post('price', true);
 
@@ -472,7 +473,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     else{
                         $addData = $this->modAdmin->addModel($data);
                         if($addData){
-                            setFlashData('alert-success', 'You have successfully added your model', 'admin/newModel');
+                            setFlashData('alert-success', 'You have successfully added your job', 'admin/newModel');
                     }
                     else{
                         setFlashData('alert-danger', 'You cannot add model right now', 'admin/newModel');
@@ -500,7 +501,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 $this->pagination->initialize($config);
 
                 $page = ($this->uri->segment(3)) ? $this->uri->segment(3): 0;
-                $data['allModels'] = $this->modAdmin->fetchAllModels($config['per_page'], $page);
+                $data['allModels'] = $this->modAdmin->newFetchAllModels($config['per_page'], $page);
                 $data['profiles'] = $this->modAdmin->checkProfile(['aId' => $this->session->userdata('aId')]) ->row_array();
                 $data['links'] = $this->pagination->create_links();
 
@@ -556,6 +557,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             if(adminLoggedIn()){
                 $data['mName'] = $this->input->post('modelName', true);
                 $data['mDescription'] = $this->input->post('md', true);
+                $data['location'] = $this->input->post('location', true);
+                $data['price'] = $this->input->post('price', true);
                 $data['productId'] = $this->input->post('productId', true);
                 $modelId = $this->input->post('mDi', true);
                 $oldImage = $this->input->post('oldImg', true);
@@ -608,34 +611,37 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         public function allUsers()
         {
-            // if(adminLoggedIn()){
-            //     if(!empty($aId) && isset($aId)){
-            //         $data['users'] = $this->modAdmin->checkUserById($aId);
-            //         if(count($data['users']) == 1){
-            //             $data['products'] = $this->modAdmin->getProducts();
-            //             $this->load->view('admin/header', $data);
-            //             $this->load->view('admin/model/editModel', $data);
-            //             $this->load->view('admin/footer', $data);
-            //         }
-            //         else{
-            //             setFlashData('alert-danger', 'Model not found', 'admin/allModels');
-            //         }
-            //     }
-            //     else {
-            //         setFlashData('alert-danger', 'Something went wrong', 'admin/allModels');
-            //     }
-            // }
-            // else{
-            //     setFlashData('alert-danger', 'Please login first to edit your category', 'admin/login');
-
-            // }
-
             if(adminLoggedIn()){
                 $config['base_url'] = site_url('admin/allUsers');
                 $totalRows = $this->modAdmin->getAllUsers();
                 $config['total_rows'] = $totalRows;
                 $config['per_page'] = 10;
                 $config['uri_segment'] = 3;
+                $config['page_query_string'] = TRUE;
+                $config['reuse_query_string'] = FALSE;
+                $config['prefix'] = '';
+                $config['suffix'] = '';
+                $config['use_global_url_suffix'] = FALSE;
+                $config['use_page_numbers'] = TRUE;
+                $config['num_links'] = 2;
+                $config['first_link']       = 'First';
+                $config['last_link']        = 'Last';
+                $config['next_link']        = 'Next';
+                $config['prev_link']        = 'Prev';
+                $config['full_tag_open']    = '<div class="pagging text-center"><nav><ul class="pagination justify-content-center">';
+                $config['full_tag_close']   = '</ul></nav></div>';
+                $config['num_tag_open']     = '<li class="page-item"><span class="page-link">';
+                $config['num_tag_close']    = '</span></li>';
+                $config['cur_tag_open']     = '<li class="page-item active"><span class="page-link">';
+                $config['cur_tag_close']    = '<span class="sr-only">(current)</span></span></li>';
+                $config['next_tag_open']    = '<li class="page-item"><span class="page-link">';
+                $config['next_tagl_close']  = '<span aria-hidden="true">&raquo;</span></span></li>';
+                $config['prev_tag_open']    = '<li class="page-item"><span class="page-link">';
+                $config['prev_tagl_close']  = '</span>Next</li>';
+                $config['first_tag_open']   = '<li class="page-item"><span class="page-link">';
+                $config['first_tagl_close'] = '</span></li>';
+                $config['last_tag_open']    = '<li class="page-item"><span class="page-link">';
+                $config['last_tagl_close']  = '</span></li>';
                 $this->load->library('pagination');
                 $this->pagination->initialize($config);
 

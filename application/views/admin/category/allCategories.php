@@ -137,7 +137,7 @@
                     <div class="col-12">
                         <div class="card card-primary">
                             <div class="card-header">
-                                <h2>All Category</h2>
+                                <h2 class="card-title">All Category</h2>
                             </div>
                             <?php if($this->session->flashdata('class')): ?>
                             <div class="alert <?php echo $this->session->flashdata('class') ?> alert-dimissible" role="alert">
@@ -145,34 +145,45 @@
                                 <?php echo $this->session->flashdata('message'); ?>
                             </div>
                             <?php endif ; ?>
-                            <div class="card-body">
-                                <div>
+                            <div class="card-body pb-0">
+                                <div class="table">
                                     <div class="btn-group w-100 mb-2">
                                         <?php if($allCategories): ?>
-                                            <table class="table table-bordered text-center">
-                                                <!-- <tr>
-                                                    <td>No.Id</td>
-                                                    <td>Category Name</td>
-                                                    <td></td>
-                                                    <td></td>
-                                                </tr> -->
-                                                <?php foreach ($allCategories as $category): ?>
+                                            <table class="table text-center">
+                                                <thead>
                                                     <tr>
-                                                        <td>
-                                                            <?php echo $category->cId ?>
-                                                        </td>
-                                                        <td>
-                                                            <?php echo $category->cName ?>
-                                                        </td>
-                                                        <td>
-                                                            <a href="<?php echo site_url('admin/editCategory/'. $category->cId) ?>" class="btn btn-primary btn-sm"><i class="fas fa-pencil-alt"></i> Edit</a>
-                                                        </td>
-                                                        <td>
-                                                            <!-- <a href="javascript:void(0)" class="btn btn-danger delcat" data-id="<?php echo $category->cId ?>" data-text="<?php echo $this->encryption->encrypt($category->cId) ?>">Delete</a> -->
-                                                            <a href="<?php echo site_url('admin/deleteCategory/'.$category->cId) ?>" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Delete</a>
-                                                        </td>
+                                                        <th>No</th>
+                                                        <th>Id</th>
+                                                        <th>Category Name</th>
+                                                        <th></th>
                                                     </tr>
-                                                <?php endforeach; ?>
+                                                </thead>
+                                                <tbody>
+                                                    <?php
+                                                        $i = 0;
+                                                        foreach ($allCategories as $category): 
+                                                        $i++
+                                                    ?>
+                                                        <tr>
+                                                            <td>
+                                                                <?php echo $i; ?>
+                                                            </td>
+                                                            <td>
+                                                                <?php echo $category->cId ?>
+                                                            </td>
+                                                            <td>
+                                                                <?php echo $category->cName ?>
+                                                            </td>
+                                                            <td class="text-right py-0 align-middle">
+                                                                <div class="btn-group btn-group-sm">
+                                                                    <a href="<?php echo site_url('admin/editCategory/'. $category->cId) ?>" class="btn btn-primary btn-sm"><i class="fas fa-pencil-alt"></i> Edit</a>
+                                                                    <!-- <a href="javascript:void(0)" class="btn btn-danger delcat" data-id="<?php echo $category->cId ?>" data-text="<?php echo $this->encryption->encrypt($category->cId) ?>">Delete</a> -->
+                                                                    <a href="<?php echo site_url('admin/deleteCategory/'.$category->cId) ?>" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Delete</a>
+                                                                </div>
+                                                            </td>
+                                                        </tr>
+                                                    <?php endforeach; ?>
+                                                    </tbody>
                                             </table>
                                             <?php echo $links;?>            
                                             <?php else: ?>

@@ -147,6 +147,9 @@
                                 <?php echo form_input('modelName', $models[0]['mName'], array('placeholder' => 'Enter Model Name', 'class' => 'form-control')); ?>
                             </div>
                             <div class="form-group">
+                                <?php echo form_input('location', $models[0]['location'], array('placeholder' => 'Enter Location', 'class' => 'form-control')); ?>
+                            </div>
+                            <div class="form-group">
                                 <?php echo form_textarea('md', $models[0]['mDescription'], array('placeholder' => 'Enter Model Descriptions', 'class' => 'form-control')) ?>
                             </div>
                             <input type="hidden" name="mDi" value="<?php echo $models[0]['mId']; ?>">
@@ -159,6 +162,9 @@
                                     }
                                     echo form_dropdown('productId', $categoriesOptions, $models[0]['productId'], 'class="form-control"');
                                 ?>            
+                            </div>
+                            <div class="form-group">
+                                <input type="number" name="price" min="0" step="1000" id="price" placeholder="0.00" class="form-control" value="<?= $models[0]['price'] ?>">   
                             </div>
                             <div class="form-group">
                                 <?php echo form_upload('modelDp', '',''); ?>
