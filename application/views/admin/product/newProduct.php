@@ -28,7 +28,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?php echo site_url('admin/allCategories'); ?>" class="nav-link active">
+                            <a href="<?php echo site_url('admin/allCategories'); ?>" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>All categories</p>
                             </a>
@@ -78,27 +78,6 @@
                             </a>
                         </li>
                     </ul>
-                </li><li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-layer-group"></i>
-                        <p>Spec
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="<?php echo site_url('admin/newSpec'); ?>" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                            <p>New Spec</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?php echo site_url('admin/allSpecs'); ?>" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>All Specs</p>
-                            </a>
-                        </li>
-                    </ul>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
@@ -114,12 +93,6 @@
                             <p>All users</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="<?php echo site_url('admin/allSpecs'); ?>" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>All Specs</p>
-                            </a>
-                        </li>
                     </ul>
                 </li>
             </ul>
@@ -133,7 +106,7 @@
     <div class="content-wrapper">
         <section class="content">
             <div class="row">
-                <div class="col-md-6 offset-3 mt-3">
+                <div class="col-md-6 offset-lg-3 mt-50">
                     <div class="card card-primary">
                         <div class="card-header">
                             <h3 class="card-title">Add New Title</h3>

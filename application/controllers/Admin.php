@@ -17,6 +17,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
                 $data['total_customers'] = $this->modAdmin->count_all_customers();
                 $data['total_products'] = $this->modAdmin->count_all_products();
+                $data['total_vacancies'] = $this->modAdmin->count_all_vacancies();
+                $data['total_categories'] = $this->modAdmin->count_all_categories();
                 $data['profiles'] = $this->modAdmin->checkProfile(['aId' => $this->session->userdata('aId')]) ->row_array();
                 $data['jobRecent'] = $this->modAdmin->jobRecent();
 
@@ -42,7 +44,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 $admindata = $this->modAdmin->checkAdmin($data);
                 if(count($admindata) == 1 ){
                     $forSession = array(
-                        'aId' => $admindata[0]['aId'],
+                    'aId' => $admindata[0]['aId'],
                         'aName' => $admindata[0]['aName'],
                         'aEmail' => $admindata[0]['aEmail']
                     );
@@ -63,6 +65,106 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 $this->session->set_flashdata('error', 'Please check the required fields');
                 redirect('admin/login');
             }
+        }
+
+        public function adminProfile($aId)
+        {
+            if(adminLoggedIn()){
+                if(!empty($aId) && isset($aId)){
+                    $data['admin'] = $this->modAdmin->checkAdminById($aId);
+                    if(count($data['admin']) == 1){
+                        $data['profiles'] = $this->modAdmin->checkProfile(['aId' => $this->session->userdata('aId')]) ->row_array();
+                        $this->load->view('admin/header', $data);
+                        $this->load->view('admin/adminProfile', $data);
+                        $this->load->view('admin/footer', $data);
+                    }
+                    else{
+                        setFlashData('alert-danger', 'Model not found', 'admin/allModels');
+                    }
+                }
+                else {
+                    setFlashData('alert-danger', 'Something went wrong', 'admin/allModels');
+                }
+            }
+            else{
+                setFlashData('alert-danger', 'Please login first to edit your category', 'admin/login');
+
+            }
+        }
+
+        public function changePassword($aId)
+        {
+            if(adminLoggedIn()){
+                if(!empty($aId) && isset($aId)){
+                    $data['admin'] = $this->modAdmin->checkAdminById($aId);
+                    if(count($data['admin']) == 1){
+                        $data['profiles'] = $this->modAdmin->checkProfile(['aId' => $this->session->userdata('aId')]) ->row_array();
+                        $this->load->view('admin/header', $data);                
+                        $this->load->view('admin/changePassword', $data);                
+                        $this->load->view('admin/footer', $data);
+                    }
+                    else{
+                        setFlashData('alert-danger', 'Model not found', 'admin/allModels');
+                    }
+                }
+                else {
+                    setFlashData('alert-danger', 'Something went wrong', 'admin/allModels');
+                }
+            }
+            else{
+                setFlashData('alert-danger', 'Please login first to edit your category', 'admin/login');
+
+            }
+        }
+
+        public function updatePassword()
+        {
+            if(adminLoggedIn()) {
+                $data['aPassword'] = $this->input->post('newpass', true);
+                $adminId = $this->input->post('aId', true);
+
+                $this->form_validation->set_rules('oldpass', 'old Password', 'callback_password_check');
+                $this->form_validation->set_rules('newpass', 'new password', 'required|min_length[6]',[
+                    'min_length' => 'The Password must contain at least 6 characters',
+                    'required' => 'Please check the required'
+                ]);
+                $this->form_validation->set_rules('passconf', 'confirm password', 'required|matches[newpass]',[
+                    'matches' => 'Passwords does not match'
+                ]);
+
+                if($this->form_validation->run() == true) {
+                    $aId = $this->session->userdata('aId');
+                    $addData = $this->modAdmin->updatePass($data, $adminId);
+                    if($addData) {
+                        $this->session->set_flashdata('error', 'Please Login to Continue');
+                        redirect('admin/login');
+                    }
+                    else {
+                        // setFlashData('alert-danger', 'Something went wrong', 'admin/adminProfile');
+                    }
+                }
+                else {
+                    $data['profiles'] = $this->modAdmin->checkProfile(['aId' => $this->session->userdata('aId')]) ->row_array();
+                    $data['admin'] = $this->modAdmin->checkAdminById();
+
+                    $this->load->view('admin/header', $data);                
+                    $this->load->view('admin/changePassword', $data);                
+                    $this->load->view('admin/footer', $data);
+                }
+                return false;
+            }
+
+        }
+
+        public function password_check($oldpass)
+        {
+            $aId = $this->session->userdata('aId');
+            $admin = $this->modAdmin->get_admin($aId);
+            if($admin->aPassword !== ($oldpass)) {
+                $this->form_validation->set_message('password_check', 'Old password does not match');
+                return false;
+            }
+            return true;
         }
 
         public function logOut(){
@@ -617,10 +719,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 $config['total_rows'] = $totalRows;
                 $config['per_page'] = 10;
                 $config['uri_segment'] = 3;
-                $config['page_query_string'] = TRUE;
-                $config['reuse_query_string'] = FALSE;
-                $config['prefix'] = '';
-                $config['suffix'] = '';
                 $config['use_global_url_suffix'] = FALSE;
                 $config['use_page_numbers'] = TRUE;
                 $config['num_links'] = 2;
@@ -659,5 +757,60 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             }
         }
 
-        
+        public function userDetail($uId)  
+        {   
+            if(adminLoggedIn()){
+                if(!empty($uId) && isset($uId)){
+                    $data['users'] = $this->modAdmin->checkUserById($uId);
+                    if(count($data['users']) == 1){
+                        $data['profiles'] = $this->modAdmin->checkProfile(['aId' => $this->session->userdata('aId')]) ->row_array();
+                        // $data['products'] = $this->modAdmin->getProducts();
+                        $this->load->view('admin/header',$data);
+                        $this->load->view('admin/userDetail', $data);
+                        $this->load->view('admin/footer');
+                    }
+                    else{
+                        setFlashData('alert-danger', 'user not found', 'admin/allUsers');
+                    }
+                }
+                else {
+                    setFlashData('alert-danger', 'Something went wrong', 'admin/allUsers');
+                }
+            }
+            else{
+                setFlashData('alert-danger', 'Please login first to edit your category', 'admin/login');
+
+            }
+        }
+
+        public function deleteUser()
+        {
+            if(adminLoggedIn()){
+                $uId = $this->uri->segment(3);
+                $this->modAdmin->deleteUser($uId);
+                setFlashData('alert-success', 'Successfully Deleted', 'admin/allUsers');
+            }
+            else {
+                setFlashData('alert-danger', 'Please login first to edit your Model', 'admin/login');
+            }
+        }
+
+        public function activity()
+        {
+            $data['profiles'] = $this->modAdmin->checkProfile(['aId' => $this->session->userdata('aId')]) ->row_array();
+
+            $this->load->view('admin/header', $data);
+            $this->load->view('admin/invoice');
+            $this->load->view('admin/footer', $data);
+        }   
+
+        public function invoice()
+        {
+            $data['invoice'] = $this->modAdmin->show_data();
+            $data['profiles'] = $this->modAdmin->checkProfile(['aId' => $this->session->userdata('aId')]) ->row_array();
+
+            $this->load->view('admin/header', $data);
+            $this->load->view('admin/invoice', $data);
+            $this->load->view('admin/footer', $data);
+        }
     }

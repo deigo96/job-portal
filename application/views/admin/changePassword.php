@@ -102,7 +102,7 @@
     <div class="content-wrapper">
         <section class="content">
             <div class="row">
-                <div class="col-md-6 offset-3 mt-3">
+                <div class="col-md-6 offset-lg-3 mt-5">
                     <div class="card card-primary">
                         <div class="card-header">
                             <h3 class="card-title">Change Password</h3>

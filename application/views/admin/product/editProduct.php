@@ -77,27 +77,6 @@
                             </a>
                         </li>
                     </ul>
-                </li><li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-layer-group"></i>
-                        <p>Spec
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="<?php echo site_url('admin/newSpec'); ?>" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                            <p>New Spec</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?php echo site_url('admin/allSpecs'); ?>" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>All Specs</p>
-                            </a>
-                        </li>
-                    </ul>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
@@ -113,12 +92,6 @@
                             <p>All users</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="<?php echo site_url('admin/allSpecs'); ?>" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>All Specs</p>
-                            </a>
-                        </li>
                     </ul>
                 </li>
             </ul>
@@ -130,16 +103,25 @@
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
-        <section class="content align-items-center">
-            <div class="container">
-                <div class="row pt-2">
-                    <div class="col-md-6">
-                        <?php if($this->session->flashdata('class')): ?>
-                            <div class="alert <?php echo $this->session->flashdata('class') ?> alert-dimissible" role="alert">
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"></span></button>
-                                <?php echo $this->session->flashdata('message'); ?>
+        <section class="content">
+            <div class="row">
+                <div class="col-md-6 offset-3 mt-3">
+                    <div class="card card-primary">
+                        <div class="card-header">
+                            <h3 class="card-title">Edit Job</h3>
+                            <div class="card-tools">
+                                <button type="button" class="btn btn-tool" data-card-widget="collapse" title="Collapse">
+                                    <i class="fas fa-minus"></i>
+                                </button>
                             </div>
-                        <?php endif ; ?>
+                        </div>
+                        <div class="card-body">
+                            <?php if($this->session->flashdata('class')): ?>
+                                <div class="alert <?php echo $this->session->flashdata('class') ?> alert-dimissible" role="alert">
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true"></span></button>
+                                    <?php echo $this->session->flashdata('message'); ?>
+                                </div>
+                            <?php endif ; ?>
                             <h3>Edit <?php echo $products[0]['pName']; ?> Product</h3>
                             <?php echo form_open_multipart('admin/updateProduct', '', '') ?>
                                 <div class="form-group">
@@ -159,17 +141,15 @@
                                         echo form_dropdown('categoryId', $categoriesOptions,$products[0]['categoryId'], 'class="form-control"');
                                     ?>            
                                 </div>
-                                <!-- <div class="form-group">
-                                    <?php echo form_upload('prodDp', '',''); ?>
-                                </div> -->
                                 <div class="form-group">
-                                    <?php echo form_submit('Update Product', 'Update Product', 'class="btn btn-primary"') ?>
+                                    <?php echo form_upload('prodDp', '','class="form-control custom-file"'); ?>
+                                </div>
+                                <div class="form-group">
+                                    <?php echo form_submit('Update Product', 'Update Product', 'class="btn btn-primary offset-4"') ?>
                                 </div>
                             <?php echo form_close(); ?>
+                        </div>
                     </div>
-                    <!-- <div class="col-md-4">
-                        <img src="<?php echo base_url('assets/images/products/'.$products[0]['pDp']); ?>" alt="" class="img embed-responsive pb-4">
-                    </div> -->
                 </div>
             </div>
         </section>

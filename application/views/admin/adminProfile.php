@@ -125,7 +125,7 @@
     <section class="content">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-6 offset-3">
+                <div class="col-md-6 offset-lg-3">
 
                     <!-- Profile Image -->
                     <div class="card card-primary card-outline">

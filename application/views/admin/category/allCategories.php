@@ -78,27 +78,6 @@
                             </a>
                         </li>
                     </ul>
-                </li><li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-layer-group"></i>
-                        <p>Spec
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="<?php echo site_url('admin/newSpec'); ?>" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                            <p>New Spec</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?php echo site_url('admin/allSpecs'); ?>" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>All Specs</p>
-                            </a>
-                        </li>
-                    </ul>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
@@ -112,12 +91,6 @@
                             <a href="<?php echo site_url('admin/allUsers'); ?>" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                             <p>All users</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?php echo site_url('admin/allSpecs'); ?>" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>All Specs</p>
                             </a>
                         </li>
                     </ul>
@@ -149,7 +122,7 @@
                                 <div class="table">
                                     <div class="btn-group w-100 mb-2">
                                         <?php if($allCategories): ?>
-                                            <table class="table text-center">
+                                            <table class="table text-center table-dark">
                                                 <thead>
                                                     <tr>
                                                         <th>No</th>

@@ -93,12 +93,6 @@
                             <p>All users</p>
                             </a>
                         </li>
-                        <li class="nav-item">
-                            <a href="<?php echo site_url('admin/allSpecs'); ?>" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>All Specs</p>
-                            </a>
-                        </li>
                     </ul>
                 </li>
             </ul>
@@ -116,7 +110,7 @@
                     <div class="col-12">
                         <div class="card card-primary">
                             <div class="card-header">
-                                <h2>All Models</h2>
+                                <h2 class="card-title">All Users</h2>
                             </div>
                             <?php if($this->session->flashdata('class')): ?>
                             <div class="alert <?php echo $this->session->flashdata('class') ?> alert-dimissible" role="alert">
@@ -125,16 +119,19 @@
                             </div>
                             <?php endif ; ?>
                             <div class="card-body">
-                                <div>
-                                    <div class="btn-group w-100 mb-2">
+                                <!-- <div>
+                                    <div class=" w-100 mb-2"> -->
                                         <?php if($allUsers): ?>
-                                            <table class="table table-bordered text-center">
-                                                <thead>
+                                            <table id="example" class="table table-bordered table-dark" style="width:100%;">
+                                                <thead class="thead-dark">
                                                     <tr>
-                                                        <th>No</th>
                                                         <th>Id</th>
                                                         <th>Name</th>
                                                         <th>Address</th>
+                                                        <th>CV</th>
+                                                        <th>Image</th>
+                                                        <th>View</th>
+                                                        <th>Delete</th>
                                                     </tr>
                                                 </thead>
                                                 <?php 
@@ -142,10 +139,7 @@
                                                     foreach ($allUsers as $user): 
                                                     $i++;
                                                 ?>
-                                                    <tr>
-                                                        <td>
-                                                            <?php echo $i ?>
-                                                        </td>
+                                                    <tr class="">
                                                         <td>
                                                             <?php echo $user->uId ?>
                                                         </td>
@@ -155,13 +149,22 @@
                                                         <td>
                                                             <?php echo $user->address ?>
                                                         </td>
-                                                        <!-- <td>
-                                                            <a href="<?php echo site_url('admin/editModel/'. $model->mId) ?>" class="btn btn-primary btn-sm"><i class="fas fa-pencil-alt"></i> Edit</a>
+                                                        <td>
+                                                            <?php echo $user->cv ?>
                                                         </td>
                                                         <td>
-                                                            <a href="javascript:void(0)" class="btn btn-danger delcat" data-id="<?php echo $category->mId ?>" data-text="<?php echo $this->encryption->encrypt($category->mId) ?>">Delete</a>
-                                                            <a href="<?php echo site_url('admin/deleteModel/'.$model->mId) ?>" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Delete</a>
-                                                        </td> -->
+                                                            <img src="<?php echo base_url('assets/images/profile_pictures/'). $user->images ?>" alt="" class="img-thumbnail img-size-50 mx-auto d-block">
+                                                        </td>
+                                                        <td class="align-middle">
+                                                            <div class="btn-group btn-group-sm ml-3">
+                                                                <a href="<?php echo base_url('admin/userDetail/'. $user->uId); ?>" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i> View</a>
+                                                            </div> 
+                                                        </td>
+                                                        <td class="align-middle">
+                                                            <div class="btn-group btn-group-sm">
+                                                                <a href="<?php echo base_url('admin/userDetail/'. $user->uId); ?>" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Delete</a>
+                                                            </div> 
+                                                        </td>
                                                     </tr>
                                                 <?php endforeach; ?>
                                             </table>         
@@ -171,7 +174,7 @@
                                     </div>
                                 </div>
                                 
-                                <p><?php echo $links;?></p>   
+                                <!-- <p><?php echo $links;?></p>    -->
                             </div>
                         </div>
                     </div>

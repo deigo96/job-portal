@@ -78,27 +78,6 @@
                             </a>
                         </li>
                     </ul>
-                </li><li class="nav-item">
-                    <a href="#" class="nav-link">
-                        <i class="nav-icon fas fa-layer-group"></i>
-                        <p>Spec
-                            <i class="right fas fa-angle-left"></i>
-                        </p>
-                    </a>
-                    <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                            <a href="<?php echo site_url('admin/newSpec'); ?>" class="nav-link">
-                                <i class="far fa-circle nav-icon"></i>
-                            <p>New Spec</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="<?php echo site_url('admin/allSpecs'); ?>" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>All Specs</p>
-                            </a>
-                        </li>
-                    </ul>
                 </li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
@@ -114,12 +93,12 @@
                             <p>All users</p>
                             </a>
                         </li>
-                        <li class="nav-item">
+                        <!-- <li class="nav-item">
                             <a href="<?php echo site_url('admin/allSpecs'); ?>" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>All Specs</p>
                             </a>
-                        </li>
+                        </li> -->
                     </ul>
                 </li>
             </ul>
@@ -147,15 +126,15 @@
                             <?php endif ; ?>
                             <div class="card-body pb-0">
                                 <div class= "table">
-                                    <div class="btn-group w-100 mb-2">
+                                    <!-- <div class="btn-group w-100 mb-2"> -->
                                         <?php if($allModels): ?>
-                                            <table class="table">
+                                            <table class="table table-bordered table-dark" id="example" style="width:100%;">
                                                 <thead>
                                                     <tr>
-                                                        <th>No</th>
                                                         <th>Id</th>
+                                                        <th>Company</th>
                                                         <th>Model</th>
-                                                        <th>Job</th>
+                                                        <th>Price</th>
                                                         <th></th>
                                                     </tr>
                                                 </thead>
@@ -166,9 +145,7 @@
                                                         $i++;
                                                     ?>
                                                         <tr>
-                                                            <td>
-                                                                <?php echo $i ?>
-                                                            </td>
+                                                            
                                                             <td>
                                                                 <?php echo $model->mId ?>
                                                             </td>
@@ -178,6 +155,10 @@
                                                             <td>
                                                                 <?php echo $model->pName ?>
                                                             </td>
+                                                            <td align=right>
+                                                                <?php echo number_format($model->price, 0,',','.') ?>
+                                                            </td>
+                                                            
                                                             <td class="text-right py-0 align-middle">
                                                                 <div class="btn-group btn-group-sm">
                                                                     <a href="<?php echo site_url('admin/editModel/'. $model->mId) ?>" class="btn btn-primary btn-sm"><i class="fas fa-pencil-alt"></i> Edit</a>

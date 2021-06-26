@@ -141,7 +141,7 @@
                                 <?= $users[0]['education'] ?>
                             </p>
                             <hr>
-                            <strong><i class="fas fa-map-marker-alt mr-1"></i> Location</strong>
+                            <strong><i class="fas fa-map-marker-alt mr-1"></i> Address</strong>
                             <p class="text-muted"><?= $users[0]['address'] ?></p>
                             <hr>
                             <strong><i class="fas fa-pencil-alt mr-1"></i> Skills</strong>
@@ -150,8 +150,10 @@
                             </p>
                             <hr>
                             <strong><i class="far fa-file-alt mr-1"></i> CV</strong>
-                            <p class="text-muted"><?= $users[0]['cv'] ?></p>
-                            <a href="#" class="btn btn-primary btn-block"><b>Follow</b></a>
+                            <p class="text-muted"><a href="<?php echo site_url('assets/images/cv/'). $users[0]['cv'] ?>"><?= $users[0]['cv'] ?></a></p>
+                            <button type="button" class="btn btn-danger btn-block" data-toggle="modal" data-target="#exampleModalCenter">
+                                DELETE
+                            </button>
                         </div>
                         <!-- /.card-body -->
                     </div>
@@ -166,4 +168,24 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
+  <!-- modal -->
+  <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLongTitle">Are you sure want to delete this data?</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <!-- <div class="modal-body">
+        ...
+      </div> -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+        <a href="<?= base_url('admin/deleteUser/').$users[0]['uId'] ?>" class="btn btn-danger"><b>DELETE</b></a>
+      </div>
+    </div>
+  </div>
+</div>
     

@@ -17,7 +17,7 @@
                         <span class="flaticon-tour"></span>
                     </div>
                     <div class="services-cap">
-                        <h5><a href="job_listing.html">Design & Creative</a></h5>
+                        <h5><a href="<?php echo base_url('joblist/job_category/').$jobListing[0]['pId'] ?>"><?php echo $jobListing[0]['pName'] ?></a></h5>
                         <span>(653)</span>
                     </div>
                 </div>
@@ -28,30 +28,8 @@
                         <span class="flaticon-cms"></span>
                     </div>
                     <div class="services-cap">
-                        <h5><a href="job_listing.html">Design & Development</a></h5>
-                        <span>(658)</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-                <div class="single-services text-center mb-30">
-                    <div class="services-ion">
-                        <span class="flaticon-report"></span>
-                    </div>
-                    <div class="services-cap">
-                        <h5><a href="job_listing.html">Sales & Marketing</a></h5>
-                        <span>(658)</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-                <div class="single-services text-center mb-30">
-                    <div class="services-ion">
-                        <span class="flaticon-app"></span>
-                    </div>
-                    <div class="services-cap">
-                        <h5><a href="job_listing.html">Mobile Application</a></h5>
-                        <span>(658)</span>
+                        <h5><a href="<?php echo base_url('joblist/job_category/').$jobListing[1]['pId'] ?>"><?php echo $jobListing[1]['pName'] ?></a></h5>
+                        <span>(<?php  echo $job_categories; ?>)</span>
                     </div>
                 </div>
             </div>
@@ -61,29 +39,7 @@
                         <span class="flaticon-helmet"></span>
                     </div>
                     <div class="services-cap">
-                        <h5><a href="job_listing.html">Construction</a></h5>
-                        <span>(658)</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-                <div class="single-services text-center mb-30">
-                    <div class="services-ion">
-                        <span class="flaticon-high-tech"></span>
-                    </div>
-                    <div class="services-cap">
-                        <h5><a href="job_listing.html">Information Technology</a></h5>
-                        <span>(658)</span>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
-                <div class="single-services text-center mb-30">
-                    <div class="services-ion">
-                        <span class="flaticon-real-estate"></span>
-                    </div>
-                    <div class="services-cap">
-                        <h5><a href="job_listing.html">Real Estate</a></h5>
+                        <h5><a href="<?php echo base_url('joblist/job_category/').$jobListing[1]['pId'] ?>"><?php echo $jobListing[2]['pName'] ?></a></h5>
                         <span>(658)</span>
                     </div>
                 </div>
@@ -94,7 +50,51 @@
                         <span class="flaticon-content"></span>
                     </div>
                     <div class="services-cap">
-                        <h5><a href="job_listing.html">Content Writer</a></h5>
+                        <h5><a href="<?php echo base_url('joblist/job_category/').$jobListing[3]['pId'] ?>"><?php echo $jobListing[3]['pName'] ?></a></h5>
+                        <span>(658)</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+                <div class="single-services text-center mb-30">
+                    <div class="services-ion">
+                        <span class="flaticon-app"></span>
+                    </div>
+                    <div class="services-cap">
+                        <h5><a href="<?php echo base_url('joblist/job_category/').$jobListing[4]['pId'] ?>"><?php echo $jobListing[4]['pName'] ?></a></h5>
+                        <span>(658)</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+                <div class="single-services text-center mb-30">
+                    <div class="services-ion">
+                        <span class="flaticon-high-tech"></span>
+                    </div>
+                    <div class="services-cap">
+                        <h5><a href="<?php echo base_url('joblist/job_category/').$jobListing[5]['pId'] ?>"><?php echo $jobListing[5]['pName'] ?></a></h5>
+                        <span>(658)</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+                <div class="single-services text-center mb-30">
+                    <div class="services-ion">
+                        <span class="flaticon-real-estate"></span>
+                    </div>
+                    <div class="services-cap">
+                        <h5><a href="<?php echo base_url('joblist/job_category/').$jobListing[6]['pId'] ?>"><?php echo $jobListing[6]['pName'] ?></a></h5>
+                        <span>(658)</span>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6">
+                <div class="single-services text-center mb-30">
+                    <div class="services-ion">
+                        <span class="flaticon-report"></span>
+                    </div>
+                    <div class="services-cap">
+                        <h5><a href="<?php echo base_url('joblist/job_category/').$jobListing[7]['pId'] ?>"><?php echo $jobListing[7]['pName'] ?></a></h5>
                         <span>(658)</span>
                     </div>
                 </div>
@@ -147,20 +147,20 @@
                     <div class="single-job-items mb-30">
                         <div class="job-items">
                             <div class="company-img">
-                                <a href="job_details.html"><img src="assets/img/icon/job-list1.png" alt=""></a>
+                                <a href="job_details.html"><img src="<?= site_url('assets/images/models/'). $job->mDp ?>" alt="" style="width:50%;margin-right:-7rem;"></a>
                             </div>
                             <div class="job-tittle">
                                 <a href="job_details.html"><h4><?= $job->pName ?></h4></a>
                                 <ul>
                                     <li><?= $job->mName ?></li>
                                     <li><i class="fas fa-map-marker-alt"></i><?= $job->location ?></li>
-                                    <li>Rp.<?= $job->price ?></li>
+                                    <li>Rp <?= number_format($job->price, 0,',','.') ?></li>
                                 </ul>
                             </div>
                         </div>
                         <div class="items-link f-right">
                             <a href="<?= site_url('jobList/jobDetail/'. $job->mId) ?>">view</a>
-                            <span>7 hours ago</span>
+                            <!-- <span>7 hours ago</span> -->
                         </div>
                     </div>
                 <?php endforeach; ?>
@@ -170,7 +170,7 @@
 </section>
 <!-- Featured_job_end -->
 <!-- How  Apply Process Start-->
-<div class="apply-process-area apply-bg pt-150 pb-150" data-background="assets/img/gallery/how-applybg.png">
+<div class="apply-process-area apply-bg pt-150 pb-150" data-background="<?php echo base_url('assets/assets/img/logo/how-applybg.png')?>">
     <div class="container">
         <!-- Section Tittle -->
         <div class="row">
@@ -190,7 +190,7 @@
                     </div>
                     <div class="process-cap">
                         <h5>1. Search a job</h5>
-                        <p>Sorem spsum dolor sit amsectetur adipisclit, seddo eiusmod tempor incididunt ut laborea.</p>
+                        <!-- <p>Sorem spsum dolor sit amsectetur adipisclit, seddo eiusmod tempor incididunt ut laborea.</p> -->
                     </div>
                 </div>
             </div>
@@ -201,7 +201,7 @@
                     </div>
                     <div class="process-cap">
                         <h5>2. Apply for job</h5>
-                        <p>Sorem spsum dolor sit amsectetur adipisclit, seddo eiusmod tempor incididunt ut laborea.</p>
+                        <!-- <p>Sorem spsum dolor sit amsectetur adipisclit, seddo eiusmod tempor incididunt ut laborea.</p> -->
                     </div>
                 </div>
             </div>
@@ -212,7 +212,7 @@
                     </div>
                     <div class="process-cap">
                         <h5>3. Get your job</h5>
-                        <p>Sorem spsum dolor sit amsectetur adipisclit, seddo eiusmod tempor incididunt ut laborea.</p>
+                        <!-- <p>Sorem spsum dolor sit amsectetur adipisclit, seddo eiusmod tempor incididunt ut laborea.</p> -->
                     </div>
                 </div>
             </div>
@@ -234,8 +234,8 @@
                             <!-- founder -->
                             <div class="testimonial-founder  ">
                                 <div class="founder-img mb-30">
-                                    <img src="assets/img/testmonial/testimonial-founder.png" alt="">
-                                    <span>Margaret Lawson</span>
+                                    <img src="<?php echo base_url('assets/images/female.png') ?>" alt="">
+                                    <span>Siti Lestari</span>
                                     <p>Creative Director</p>
                                 </div>
                             </div>
@@ -251,8 +251,8 @@
                             <!-- founder -->
                             <div class="testimonial-founder  ">
                                 <div class="founder-img mb-30">
-                                    <img src="assets/img/testmonial/testimonial-founder.png" alt="">
-                                    <span>Margaret Lawson</span>
+                                    <img src="<?php echo base_url('assets/images/male.png') ?>" alt="">
+                                    <span>Agus Prayitno</span>
                                     <p>Creative Director</p>
                                 </div>
                             </div>
@@ -268,8 +268,8 @@
                             <!-- founder -->
                             <div class="testimonial-founder  ">
                                 <div class="founder-img mb-30">
-                                    <img src="assets/img/testmonial/testimonial-founder.png" alt="">
-                                    <span>Margaret Lawson</span>
+                                    <img src="<?php echo base_url('assets/images/male.png') ?>" alt="">
+                                    <span>Fadnur Alamanda</span>
                                     <p>Creative Director</p>
                                 </div>
                             </div>
@@ -284,91 +284,5 @@
     </div>
 </div>
 <!-- Testimonial End -->
-    <!-- Support Company Start-->
-    <div class="support-company-area support-padding fix">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-xl-6 col-lg-6">
-                <div class="right-caption">
-                    <!-- Section Tittle -->
-                    <div class="section-tittle section-tittle2">
-                        <span>What we are doing</span>
-                        <h2>24k Talented people are getting Jobs</h2>
-                    </div>
-                    <div class="support-caption">
-                        <p class="pera-top">Mollit anim laborum duis au dolor in voluptate velit ess cillum dolore eu lore dsu quality mollit anim laborumuis au dolor in voluptate velit cillum.</p>
-                        <p>Mollit anim laborum.Duis aute irufg dhjkolohr in re voluptate velit esscillumlore eu quife nrulla parihatur. Excghcepteur signjnt occa cupidatat non inulpadeserunt mollit aboru. temnthp incididbnt ut labore mollit anim laborum suis aute.</p>
-                        <a href="about.html" class="btn post-btn">Post a job</a>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-6 col-lg-6">
-                <div class="support-location-img">
-                    <img src="assets/img/service/support-img.jpg" alt="">
-                    <div class="support-img-cap text-center">
-                        <p>Since</p>
-                        <span>1994</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Support Company End-->
-<!-- Blog Area Start -->
-<div class="home-blog-area blog-h-padding">
-    <div class="container">
-        <!-- Section Tittle -->
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="section-tittle text-center">
-                    <span>Our latest blog</span>
-                    <h2>Our recent news</h2>
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xl-6 col-lg-6 col-md-6">
-                <div class="home-blog-single mb-30">
-                    <div class="blog-img-cap">
-                        <div class="blog-img">
-                            <img src="assets/img/blog/home-blog1.jpg" alt="">
-                            <!-- Blog date -->
-                            <div class="blog-date text-center">
-                                <span>24</span>
-                                <p>Now</p>
-                            </div>
-                        </div>
-                        <div class="blog-cap">
-                            <p>|   Properties</p>
-                            <h3><a href="single-blog.html">Footprints in Time is perfect House in Kurashiki</a></h3>
-                            <a href="#" class="more-btn">Read more »</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-6 col-lg-6 col-md-6">
-                <div class="home-blog-single mb-30">
-                    <div class="blog-img-cap">
-                        <div class="blog-img">
-                            <img src="assets/img/blog/home-blog2.jpg" alt="">
-                            <!-- Blog date -->
-                            <div class="blog-date text-center">
-                                <span>24</span>
-                                <p>Now</p>
-                            </div>
-                        </div>
-                        <div class="blog-cap">
-                            <p>|   Properties</p>
-                            <h3><a href="single-blog.html">Footprints in Time is perfect House in Kurashiki</a></h3>
-                            <a href="#" class="more-btn">Read more »</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- Blog Area End -->
-
+    
 </main>

@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title><?=$this->config->config["pageTitleReg"]?></title>
+    <link rel="shortcut icon" type="image/x-icon" href="<?= base_url('assets'); ?>/favicon.ico">
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
     <link rel="stylesheet" href="<?php echo base_url()?>/assets/plugins/fontawesome-free/css/all.min.css">
     <link rel="stylesheet" href="<?php echo base_url()?>/assets/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
@@ -13,7 +15,7 @@
     <div class="login-box">
         <div class="card card-outline card-primary">
             <div class="login-logo">
-                <a href="<?php echo base_url().'home'; ?>"><b>UBSI</b>Jobs</a>
+                <a href="<?php echo site_url().'home';?>"><img src="<?= base_url('assets/'); ?>assets/img/logo/ubsiportal.png" alt="" style="width:167px;"></a>
             </div>
             <div class="card">
                 <div class="card-body">

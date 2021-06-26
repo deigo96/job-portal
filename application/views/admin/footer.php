@@ -1,6 +1,5 @@
 <footer class="main-footer">
-    <strong>Copyright &copy; 2014-2020 <a href="https://adminlte.io">AdminLTE.io</a>.</strong>
-    All rights reserved.
+    <strong>Copyright &copy; 2014-2020 <a href="https://adminlte.io">AdminLTE.io</a> | Modified by <a href="https://github.com/deigo96/job-portal/tree/master" target="_blank">Deigo Siahaan</a></strong>
     <div class="float-right d-none d-sm-inline-block">
       <b>Version</b> 3.1.0-rc
     </div>
@@ -24,6 +23,9 @@
 </script>
 <!-- Bootstrap 4 -->
 <script src="<?php echo base_url()?>/assets/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!--DataTables -->
+<script src="<?php echo base_url()?>/assets/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="<?php echo base_url()?>/assets/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
 <!-- ChartJS -->
 <script src="<?php echo base_url()?>/assets/plugins/chart.js/Chart.min.js"></script>
 <!-- Sparkline -->
@@ -51,3 +53,14 @@
 <script src="<?php echo base_url()?>/assets/js/adminCustom.js"></script>
 </body>
 </html>
+<script>
+  $(document).ready(function() {
+    var table = $('#example').DataTable( {
+        rowReorder: true,
+        columnDefs: [
+            { orderable: true, className: 'reorder', targets: [1,2,3] },
+            { orderable: false, targets: '_all' }
+        ]
+    } );
+} );
+</script>

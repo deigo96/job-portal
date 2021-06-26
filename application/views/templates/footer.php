@@ -9,7 +9,7 @@
                             <div class="footer-tittle">
                                 <h4>About Us</h4>
                                 <div class="footer-pera">
-                                    <p>Heaven frucvitful doesn't cover lesser dvsays appear creeping seasons so behold.</p>
+                                    <p>We made this project for Web Progamming III</p>
                             </div>
                             </div>
                         </div>
@@ -36,7 +36,7 @@
                         <div class="footer-tittle">
                             <h4>Important Link</h4>
                             <ul>
-                                <li><a href="https://github.com/deigo96/job-portal.git" target="_blank"> View Project</a></li>
+                                <li><a href="https://github.com/deigo96/job-portal/tree/master" target="_blank"> View Project</a></li>
                                 <li><a href="<?= base_url('contact'); ?>">Contact Us</a></li>
                                 <li><a href="#">Testimonial</a></li>
                                 <li><a href="#">Proparties</a></li>
@@ -62,7 +62,7 @@
                                         onblur="this.placeholder = ' Email Address '">
                                         <div class="form-icon">
                                             <button type="submit" name="submit" id="newsletter-submit"
-                                            class="email_icon newsletter-submit button-contactForm"><img src="assets/img/icon/form.png" alt=""></button>
+                                            class="email_icon newsletter-submit button-contactForm"><img src="<?php echo base_url('assets/assets/img/logo/form.png') ?>" alt=""></button>
                                         </div>
                                         <div class="mt-10 info"></div>
                                     </form>
@@ -86,9 +86,12 @@
 Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
                             </div>
-                            <div class="footer-copy-Right">
+                            <div class="footer-copy-right">
+                              <p class="offset-3 text-center">&</p>
+                            </div>
+                            <div class="footer-copy-right">
                                <p class="offset-3 text-center">
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> This template is modified by <a href="#" target="_blank">Deigo Siahaan</a>
+                                Modified by <a href="https://github.com/deigo96/job-portal/tree/master" target="_blank" class="text-info">Deigo Siahaan</a>
                                </p>
                             </div>
                         </div>
@@ -106,93 +109,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> This 
     </div>
     <!-- Footer End-->
 </footer>
-
-<!-- <div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header border-bottom-0">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="form-title text-center">
-          <h4>Login</h4>
-        </div>
-        <div class="d-flex flex-column text-center">
-          <form>
-            <div class="form-group">
-              <input type="email" class="form-control" id="email1"placeholder="Your email address...">
-            </div>
-            <div class="form-group">
-              <input type="password" class="form-control" id="password1" placeholder="Your password...">
-            </div>
-            <button type="button" class="btn btn-info btn-block btn-round">Login</button>
-          </form>
-          
-          <div class="text-center text-muted delimiter">or use a social network</div>
-            <div class="d-flex justify-content-center social-buttons">
-                <button type="button" class="btn btn-secondary btn-round" data-toggle="tooltip" data-placement="top" title="Twitter">
-                <i class="fab fa-twitter"></i>
-                </button>
-                <button type="button" class="btn btn-secondary btn-round" data-toggle="tooltip" data-placement="top" title="Facebook">
-                <i class="fab fa-facebook"></i>
-                </button>
-                <button type="button" class="btn btn-secondary btn-round" data-toggle="tooltip" data-placement="top" title="Linkedin">
-                <i class="fab fa-linkedin"></i>
-                </button>
-            </div>
-        </div>
-      </div>
-    </div>
-      <div class="modal-footer d-flex justify-content-center">
-        <div class="signup-section">Not a member yet? <a href="#a" class="text-info"> Sign Up</a>.</div>
-      </div>
-  </div>
-</div>
-<div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-dialog-centered" role="document">
-    <div class="modal-content">
-      <div class="modal-header border-bottom-0">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">&times;</span>
-        </button>
-      </div>
-      <div class="modal-body">
-        <div class="form-title text-center">
-          <h4>Register</h4>
-        </div>
-        <div class="d-flex flex-column text-center">
-          <form>
-            <div class="form-group">
-              <input type="email" class="form-control" id="email1"placeholder="Your email address...">
-            </div>
-            <div class="form-group">
-              <input type="password" class="form-control" id="password1" placeholder="Your password...">
-            </div>
-            <button type="button" class="btn btn-info btn-block btn-round">Login</button>
-          </form>
-          
-          <div class="text-center text-muted delimiter">or use a social network</div>
-          <div class="d-flex justify-content-center social-buttons">
-            <button type="button" class="btn btn-secondary btn-round" data-toggle="tooltip" data-placement="top" title="Twitter">
-              <i class="fab fa-twitter"></i>
-            </button>
-            <button type="button" class="btn btn-secondary btn-round" data-toggle="tooltip" data-placement="top" title="Facebook">
-              <i class="fab fa-facebook"></i>
-            </button>
-            <button type="button" class="btn btn-secondary btn-round" data-toggle="tooltip" data-placement="top" title="Linkedin">
-              <i class="fab fa-linkedin"></i>
-            </button>
-          </di>
-        </div>
-      </div>
-    </div>
-      <div class="modal-footer d-flex justify-content-center">
-        <div class="signup-section">Already have an account? <a href="<?= base_url(); ?>" data-toggle="modal" data-target="#loginModal" class="text-info"> Login</a>.</div>
-      </div>
-  </div>
-</div> -->
 
 <!-- JS here -->
 

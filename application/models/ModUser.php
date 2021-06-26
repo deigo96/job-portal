@@ -7,18 +7,9 @@ class ModUser extends CI_Model{
                 ->result_array(); 
     }
 
-    public function getProfile()
+    public function getProfile($where = null)
     {
-        $profiles = array();
-        $this->db->select('first_name, last_name, email, link');
-        $this->db->from('users');
-
-        $query = $this->db->get();
-
-        if($query->num_rows() >0 ){
-            $profiles = $query->result();
-        }
-        return $profiles;
+        $this->db->get_where('users', $where);
 
     }
     public function checkProfile($where=null)
@@ -75,5 +66,26 @@ class ModUser extends CI_Model{
         return $this->db->get_where('users', array(
             'email' => $data['email']
         ));
+    }
+
+    public function find($mId)
+    {
+        $this->db->select('*');
+        $this->db->from('products');
+        $this->db->join('models', 'productId=pId');
+        // $this->db->join('specs', 'modelId=mId', 'INNER');
+        $this->db->where('mId', $mId);
+        $query = $this->db->get();
+        $result = $query->result_array();
+        return $result;
+        // $result = $this->db->where('mId', $mId)
+        //                     ->limit(1)
+        //                     ->get('models');
+        // if($result->num_rows() > 0) {
+        //     return $result->row();
+        // }
+        // else {
+        //     return array();
+        // }
     }
 }

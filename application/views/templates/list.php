@@ -226,7 +226,7 @@
                                     </div>
                                     <div class="items-link items-link2 f-right">
                                         <a href="<?= site_url('Joblist/jobDetail/'.$job->mId); ?>">View</a>
-                                        <span>7 hours ago</span>
+                                        <!-- <span>7 hours ago</span> -->
                                     </div>
                                 </div>
                                 <?php endforeach; ?>

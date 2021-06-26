@@ -8,6 +8,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 ->result_array(); 
         }
 
+        public function checkAdminById()
+        {
+            return $this->db->get_where('admin', array('aId'=>1))->result_array();
+        }
+
         public function checkProfile($where=null)
         {
             return $this->db->get_where('admin', $where);
@@ -157,6 +162,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             return $this->db->delete('models');
         }
 
+        public function deleteUser($uId)
+        {
+            $this->db->where('uId', $uId);
+            return $this->db->delete('users');
+        }
+
         public function checkModelById($mId)
         {
             return $this->db->get_where('models', array('mId'=>$mId))->result_array();
@@ -187,15 +198,30 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             return $this->db->get('models')->num_rows();
         }
 
-        public function checkUserById($aId)
+        public function count_all_categories()
         {
-            return $this->db->get_where('users', array('aId'=>$aId))->result_array();
+            return $this->db->get('categories')->num_rows();
+        }
+
+        public function job_categories()
+        {
+            $this->db->select('*');
+            $this->db->from('products');
+            $this->db->join('models', 'productId=pId');
+            $query = $this->db->get();
+            return $query->num_rows();
+        }
+
+        public function checkUserById($uId)
+        {
+            return $this->db->get_where('users', array('uId'=>$uId))->result_array();
         }
 
         public function fetchAllUsers($limit, $start)
         {
             $this->db->limit($limit, $start);
             $this->db->order_by('uId', 'desc');
+            $this->db->limit('100');
             $query = $this->db->get_where('users', array('aId'=>1));
             if($query->num_rows() > 0){
                 foreach ($query->result() as $row) {
@@ -227,7 +253,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $this->db->from('products');
             $this->db->join('models', 'productId=pId');
             $this->db->order_by('mId', 'desc');
-            $this->db->limit('4');
+            $this->db->limit('5');
             $query = $this->db->get();
             return $query->result();
         }
@@ -251,4 +277,59 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $result = $query->result_array();
             return $result;
         }
+
+        public function newFetchAllModels($limit, $start)
+        {
+            $this->db->select('*');
+            $this->db->from('products');
+            $this->db->join('models', 'productId=pId');
+            $this->db->limit($limit, $start);
+            $this->db->order_by('mId', 'asc');
+            $query = $this->db->get();
+            return $query->result();
+        }
+
+        public function job_detail($mId)
+        {
+            $this->db->select('*');
+            $this->db->join('models', 'productId=pId');
+            return $this->db->get_where('products', array('mId'=>$mId))->result_array();
+        }
+
+        public function vacancy_detail($pId)
+        {
+            $this->db->select('*');
+            $this->db->from('products');
+            $this->db->join('models', 'productId=pId');
+            $this->db->where('pId', $pId);
+            $query = $this->db->get();
+            return $query->result();
+        }
+
+        public function get_admin($aId)
+        {
+            $this->db->where('aId', $aId);
+            $query = $this->db->get('admin');
+            return $query->row();
+        }
+
+        public function updatePass($data, $adminId)
+        {
+            $this->db->where('aId', 1);
+            return $this->db->update('admin', $data);
+        }
+
+        public function invoice()
+        {
+            date_default_timezone_set('Asia/Jakarta');
+            
+            foreach ($this->cart->contents() as $item) {
+                
+                $data = array(
+                    
+                );
+            }
+
+        }
+        
     }
