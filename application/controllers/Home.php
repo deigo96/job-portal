@@ -3,27 +3,15 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Home extends CI_Controller{
     public function index()
     {
-        // $data['category'] = $this->modAdmin->checkCategoryById($cId);
-        // // $data['models'] = $this->modAdmin->checkModelById($mId);
-        // $data['products'] = $this->modAdmin->checkProductById($pId);
-        // $viewData = [];
-        // $viewData['products'] = $this->db->limit(12)->get('products')->result();
-        // $this->pagination->initialize([
-        //     'base_url'      => current_url(),
-        //     'total_rows'    => $this->db->count_all_results('products')
-        // ]);
-        // $viewData['pagination'] = $this->pagination->create_links();
-        // $data['models'] = $this->db->limit(12)->get('models')->result();
-        // $data['products'] = $this->db->get('products')->result();
-        // $data['categories'] = $this->db->get('categories')->result();
-
         $data['jobList'] =$this->modAdmin->jobList();
         $data['jobListing'] =$this->modAdmin->jobListing();
+        $data['job_categories'] = $this->modAdmin->job_categories();
+        $data['title'] = "UBSIPORTAL";
         if($this->session->userdata('uId')) {
 
             $data['profiles'] = $this->modUser->checkProfile(['uId' => $this->session->userdata('uId')]) ->row_array();
 
-            $this->load->view('templates/header');
+            $this->load->view('templates/header',$data);
             $this->load->view('templates/users/topbar', $data);
             $this->load->view('templates/slider', $data);
             $this->load->view('templates/users/service', $data);
@@ -31,7 +19,7 @@ class Home extends CI_Controller{
 
         }
         else {
-            $this->load->view('templates/header');
+            $this->load->view('templates/header', $data);
             $this->load->view('templates/topbar');
             $this->load->view('templates/slider');
             $this->load->view('templates/service', $data);
@@ -112,36 +100,6 @@ class Home extends CI_Controller{
                         redirect('home/login');
             }
         }
-        // $data['email'] = $this->input->post('email', true);
-        // $data['password'] = $this->input->post('password', true);
-
-        // if(!empty($data['email']) && !empty($data['password'])){
-        //     $userdata = $this->modUser->checkUser($data);
-        //     if(count($userdata) == 1 ){
-        //         $forSession = array(
-        //             'uId' => $userdata[0]['uId'],
-        //             'first_name' => $userdata[0]['first_name'],
-        //             'last_name' => $userdata[0]['last_name'],
-        //             'email' => $userdata[0]['email']
-        //         );
-        //         $this->session->set_userdata($forSession);
-        //         if($this->session->userdata('uId')){
-        //             redirect('home');
-        //         }
-        //         else{
-        //             echo 'session not created';
-        //         }
-        //     }
-        //     else{
-        //         $this->session->set_flashdata('error', 'Email or Password is not matched');
-        //         redirect('home/login');
-        //     }
-        // }
-        // else{
-        //     $this->session->set_flashdata('error', 'Please check the required fields');
-        //     redirect('home/login');
-        // }
-
     }
 
     
@@ -175,7 +133,7 @@ class Home extends CI_Controller{
 
             $this->modUser->register($data);
 
-            setFlashData('alert-success', 'Please Login to Continue', 'home/login');
+            setFlashData('alert-danger', 'Please Login to Continue', 'home/login');
         }
     }
 
@@ -183,6 +141,7 @@ class Home extends CI_Controller{
     {
         if($this->session->userdata('uId')) {
             $this->session->set_userdata('uId');
+            $this->cart->destroy();
             $this->session->set_flashdata('error', 'You have successfully logged out');
             redirect('home/login');
         }

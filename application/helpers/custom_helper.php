@@ -61,7 +61,7 @@
         $CI = get_instance();
         $CI->load->library('session');
 
-        if($CI->session->userdata('UId')){
+        if($CI->session->userdata('uId')){
             return $CI->session->userdata('uId');
         }
         else{

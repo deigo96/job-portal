@@ -159,7 +159,7 @@ $config['composer_autoload'] = FALSE;
 | DO NOT CHANGE THIS UNLESS YOU FULLY UNDERSTAND THE REPERCUSSIONS!!
 |
 */
-$config['permitted_uri_chars'] = 'a-z 0-9~%.:_\-';
+# $config['permitted_uri_chars'] = 'a-z 0-9~%.:_\-@\=';
 
 /*
 |--------------------------------------------------------------------------
@@ -522,3 +522,8 @@ $config['rewrite_short_tags'] = FALSE;
 | Array:		array('10.0.1.200', '192.168.5.0/24')
 */
 $config['proxy_ips'] = '';
+
+$config['pageTitle'] = "UBSIPORTAL";
+$config['pageTitleLogin'] = "UBSIPORTAL | Login";
+$config['pageTitleAdmin'] = "UBSIPORTAL | Admin";
+$config['pageTitleReg'] = "UBSIPORTAL | Register";
