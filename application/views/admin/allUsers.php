@@ -130,8 +130,7 @@
                                                         <th>Address</th>
                                                         <th>CV</th>
                                                         <th>Image</th>
-                                                        <th>View</th>
-                                                        <th>Delete</th>
+                                                        <th></th>
                                                     </tr>
                                                 </thead>
                                                 <?php 
@@ -155,16 +154,17 @@
                                                         <td>
                                                             <img src="<?php echo base_url('assets/images/profile_pictures/'). $user->images ?>" alt="" class="img-thumbnail img-size-50 mx-auto d-block">
                                                         </td>
-                                                        <td class="align-middle">
-                                                            <div class="btn-group btn-group-sm ml-3">
-                                                                <a href="<?php echo base_url('admin/userDetail/'. $user->uId); ?>" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i> View</a>
-                                                            </div> 
-                                                        </td>
-                                                        <td class="align-middle">
+                                                        <td class="text-right py-0 align-middle">
                                                             <div class="btn-group btn-group-sm">
+                                                                <a href="<?php echo base_url('admin/userDetail/'. $user->uId); ?>" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i> View</a>
                                                                 <a href="<?php echo base_url('admin/userDetail/'. $user->uId); ?>" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Delete</a>
                                                             </div> 
                                                         </td>
+                                                        <!-- <td class="align-middle">
+                                                            <div class="btn-group btn-group-sm">
+                                                                <a href="<?php echo base_url('admin/userDetail/'. $user->uId); ?>" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Delete</a>
+                                                            </div> 
+                                                        </td> -->
                                                     </tr>
                                                 <?php endforeach; ?>
                                             </table>         

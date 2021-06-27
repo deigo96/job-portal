@@ -147,7 +147,7 @@
                         <div class="single-job-items mb-30">
                             <div class="job-items">
                                 <div class="company-img">
-                                    <a href="job_details.html"><img src="assets/img/icon/job-list1.png" alt=""></a>
+                                    <a href="job_details.html"><img src="<?= site_url('assets/images/models/'). $job->mDp ?>" alt="" style="width:115px;height:75.53px;"></a>
                                 </div>
                                 <div class="job-tittle">
                                     <a href="job_details.html"><h4><?= $job->pName ?></h4></a>

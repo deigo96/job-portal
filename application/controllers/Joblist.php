@@ -15,7 +15,7 @@ class JobList extends CI_Controller {
         $page = ($this->uri->segment(3)) ? $this->uri->segment(3): 0;
         $data['allJobs'] = $this->modAdmin->fetchAllModels($config['per_page'], $page);
         $data['links'] = $this->pagination->create_links();
-        $data['jobList'] =$this->modAdmin->jobList();
+        $data['jobList'] =$this->modAdmin->jobListall();
         $data['total_vacancies'] = $this->modAdmin->count_all_vacancies();
 
         if($this->session->userdata('uId')) {

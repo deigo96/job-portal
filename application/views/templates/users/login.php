@@ -15,8 +15,7 @@
     <div class="login-box">
         <div class="card card-outline card-primary">
             <div class="login-logo">
-            <a href="<?php echo site_url().'home';?>"><img src="<?= base_url('assets/'); ?>assets/img/logo/ubsiportal.png" alt="" style="width:167px;"></a>
-            
+                <a href="<?php echo site_url().'home';?>"><img src="<?= base_url('assets/'); ?>assets/img/logo/ubsiportal.png" alt="" style="width:167px;"></a>
             </div>
             <div class="card">
                 <div class="card-body">

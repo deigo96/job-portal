@@ -51,40 +51,26 @@
                                 <p><?= $jobs[0]['mDescription']; ?></p>
                             </div>
                         </div>
-
                     </div>
                     <!-- Right Content -->
                     <div class="col-xl-4 col-lg-4">
                         <div class="post-details3  mb-50">
                             <!-- Small Section Tittle -->
-                           <div class="small-section-tittle">
-                               <h4>Job Overview</h4>
-                           </div>
-                          <ul>
-                              <li>Posted date : <span><?= $jobs[0]['mDate']; ?></span></li>
-                              <li>Location : <span><?= $jobs[0]['location']; ?></span></li>
-                              <!-- <li>Vacancy : <span><?= $jobs[0]['date']; ?></span></li>
-                              <li>Job nature : <span><?= $jobs[0]['date']; ?></span></li> -->
-                              <li>Salary :  <span>Rp <?= number_format($jobs[0]['price'], 0,',','.'); ?></span></li>
-                              <li>Application date : <span><?= $jobs[0]['mDate']; ?></span></li>
-                          </ul>
-                         <div align=center class="apply-btn2">
-                            <a href="<?php echo base_url('Joblist/add_to_cart/').$jobs[0]['mId'] ?>" class="genric-btn info-border circle arrow">Apply Job</a>
-                         </div>
-                       </div>
-                        <div class="post-details4  mb-50">
-                            <!-- Small Section Tittle -->
-                           <div class="small-section-tittle">
-                               <h4>Company Information</h4>
-                           </div>
-                              <span>Colorlib</span>
-                              <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+                            <div class="small-section-tittle">
+                                <h4>Job Overview</h4>
+                            </div>
                             <ul>
-                                <li>Name: <span>Colorlib </span></li>
-                                <li>Web : <span> colorlib.com</span></li>
-                                <li>Email: <span>carrier.colorlib@gmail.com</span></li>
+                                <li>Posted date : <span><?= $jobs[0]['mDate']; ?></span></li>
+                                <li>Location : <span><?= $jobs[0]['location']; ?></span></li>
+                                <!-- <li>Vacancy : <span><?= $jobs[0]['date']; ?></span></li>
+                                <li>Job nature : <span><?= $jobs[0]['date']; ?></span></li> -->
+                                <li>Salary :  <span>Rp <?= number_format($jobs[0]['price'], 0,',','.'); ?></span></li>
+                                <li>Application date : <span><?= $jobs[0]['mDate']; ?></span></li>
                             </ul>
-                       </div>
+                            <div align=center class="apply-btn2">
+                                <a href="<?php echo base_url('Joblist/add_to_cart/').$jobs[0]['mId'] ?>" class="genric-btn info-border circle arrow">Apply Job</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>

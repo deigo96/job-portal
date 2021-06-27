@@ -211,7 +211,7 @@
                                 <div class="single-job-items mb-30">
                                     <div class="job-items">
                                         <div class="company-img">
-                                            <a href="#"><img src="" alt=""></a>
+                                        <a href="#"><img src="<?= site_url('assets/images/models/'). $job->mDp ?>" alt="" style="width:115px;height:75.53px;"></a>
                                         </div>
                                         <div class="job-tittle job-tittle2">
                                             <a href="#">
@@ -220,7 +220,7 @@
                                             <ul>
                                                 <li><?= $job->mName ?></li>
                                                 <li><i class="fas fa-map-marker-alt"></i><?= $job->location ?></li>
-                                                <li><?= $job->price ?></li>
+                                                <li><?= number_format($job->price, 0, ',','.') ?></li>
                                             </ul>
                                         </div>
                                     </div>

@@ -237,6 +237,16 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             return $this->db->get_where('users', array('aId'=>1))->num_rows();
         }
 
+        public function jobListall()
+        {
+            $this->db->select('*');
+            $this->db->from('products');
+            $this->db->join('models', 'productId=pId');
+            // $this->db->limit('4');
+            $query = $this->db->get();
+            return $query->result();
+        }
+
         public function jobList()
         {
             $this->db->select('*');

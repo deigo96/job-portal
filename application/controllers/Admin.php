@@ -799,9 +799,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         {
             $data['profiles'] = $this->modAdmin->checkProfile(['aId' => $this->session->userdata('aId')]) ->row_array();
 
-            $this->load->view('admin/header', $data);
             $this->load->view('admin/invoice');
-            $this->load->view('admin/footer', $data);
         }   
 
         public function invoice()

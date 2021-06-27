@@ -151,11 +151,13 @@
                                                             <!-- <td>
                                                                 <?php echo $product->pCompany ?>
                                                             </td> -->
-                                                            <td class="text-right.py-0.align-middle">
+                                                            <td class="text-right py-0 align-middle">
                                                                 <div class="btn-group btn-group-sm">
                                                                     <a href="<?php echo site_url('admin/editProduct/'. $product->pId) ?>" class="btn btn-primary btn-sm"><i class="fas fa-pencil-alt"></i> Edit</a>
                                                                     <!-- <a href="javascript:void(0)" class="btn btn-danger delcat" data-id="<?php echo $category->cId ?>" data-text="<?php echo $this->encryption->encrypt($category->cId) ?>">Delete</a> -->
-                                                                    <a href="<?php echo site_url('admin/deleteProduct/'.$product->pId) ?>" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Delete</a>
+                                                                    <button type="button" class="btn btn-danger btn-sm" data-toggle="modal" data-target="#exampleModalCenter">
+                                                                        <i class="fas fa-trash"></i> Delete
+                                                                    </button>
                                                                 </div>
                                                             </td>
                                                         </tr>
@@ -176,4 +178,24 @@
         </section>
     </div>
     <!-- /.content-wrapper -->
+    <!-- modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLongTitle">Are you sure want to delete this data?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <!-- <div class="modal-body">
+                    ..
+                </div> -->
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    <a href="<?= base_url('admin/deleteUser/').$users[0]['uId'] ?>" class="btn btn-danger"><b>DELETE</b></a>
+                </div>
+            </div>
+        </div>
+    </div>
     

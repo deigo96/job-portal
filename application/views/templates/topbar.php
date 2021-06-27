@@ -24,8 +24,8 @@
                             </div>          
                             <!-- Header-btn -->
                             <div class="header-btn d-none f-right d-lg-block">
-                                <a href="<?php echo site_url().'home/login'; ?>" type="submit" class="btn head-btn1">Login</a>
-                                <a href="<?php echo site_url().'home/register'; ?>" type="submit" class="btn head-btn2">Register</a>
+                                <a href="<?php echo site_url().'home/login'; ?>" type="submit" class="genric-btn info circle">Login</a>
+                                <a href="<?php echo site_url().'home/register'; ?>" type="submit" class="genric-btn primary-border circle">Register</a>
                                 <!-- <a href="#" class="btn head-btn1">Register</a>
                                 <a href="#" class="btn head-btn2">Login</a> -->
                                 <div class="input-group pb-modalreglog-input-group">
