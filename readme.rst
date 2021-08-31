@@ -4,7 +4,7 @@
 
 -Admin
 	email : deigosiahaan@gmail.com
-	pass	: admin
+	pass	: admin96
 
 -User
 	email	: deigosiahaan@gmail.com
