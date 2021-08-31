@@ -16,7 +16,7 @@
                                 <nav class="d-none d-lg-block">
                                     <ul id="navigation">
                                         <li><a href="<?php echo site_url().'home'; ?>">Home</a></li>
-                                        <li><a href="<?php echo site_url().'joblist'; ?>">Find a Jobs </a></li>
+                                        <li><a href="<?php echo site_url().'joblist'; ?>">Find Jobs </a></li>
                                         <li><a href="<?php echo site_url().'about'; ?>">About</a></li>
                                         <li><a href="<?php echo site_url().'contact'; ?>">Contact</a></li>
                                     </ul>
