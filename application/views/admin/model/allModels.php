@@ -139,6 +139,15 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
+                                                    <tr>
+                                                        <td><input type="text" name="" id="" class="id"></td>
+                                                        <td><input type="text" name="" id="" class="company"></td>
+                                                        <td><input type="text" name="" id="" class="name"></td>
+                                                        <td><input type="text" name="" id="" class="price"></td>
+                                                        <td><input type="text" name="" id="" class="action"></td>
+                                                    </tr>
+                                                </tbody>
+                                                <tbody>
                                                     <?php 
                                                         $i = 0;
                                                         foreach ($allModels as $model): 
@@ -206,4 +215,23 @@
             </div>
         </div>
     </div>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {  
+        $.ajax({  
+            url: 'http://localhost:3000/tampil-model',  
+            type: 'GET',  
+            dataType: 'json', 
+            success: function(data) {  
+                console.log(data.values[0].mName);
+                $('#name').val(data.values.mName);  
+            },  
+            error: function(err) {  
+                console.log(err);  
+            }  
+        });  
+    }); 
+    </script>
+
+<!-- <script src="<?php echo base_url('assets/js/model.js') ?>"></script> -->
     
