@@ -85,19 +85,39 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         {
             return $this->db->get_where('products', array('pStatus'=>1))->num_rows();
         }
-
-        public function fetchAllProducts($limit, $start)
+        public function fetchAllProducts()
         {
-            $this->db->limit($limit, $start);
-            $query = $this->db->get_where('products', array('pStatus'=>1));
-            if($query->num_rows() > 0){
-                foreach ($query->result() as $row) {
-                    $data[] = $row;
-                }
-                return $data;
+            $query = "tampil-product";
+            $method = "GET";
+            $data = "";
+
+            $result = $this->auth->cekAPI($query, $method, $data);
+            $data               = array();
+            $data[]             = json_decode($result);
+            var_dump($data);
+            if ($data[0] != null) {
+                $allProducts = $data[0]->values;
+    
+                return $allProducts;
+            } else {
+                $allProducts  = array();
+    
+                return $allProducts;
             }
-            return false;
         }
+
+        // public function fetchAllProducts($limit, $start)
+        // {
+        //     $this->db->limit($limit, $start);
+        //     $query = $this->db->get_where('products', array('pStatus'=>1));
+        //     if($query->num_rows() > 0){
+        //         foreach ($query->result() as $row) {
+        //             $data[] = $row;
+        //         }
+        //         return $data;
+        //     }
+        //     return false;
+        // }
 
         public function deleteProduct($pId)
         {

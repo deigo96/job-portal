@@ -421,7 +421,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 $this->pagination->initialize($config);
 
                 $page = ($this->uri->segment(3)) ? $this->uri->segment(3): 0;
-                $data['allProducts'] = $this->modAdmin->fetchAllProducts($config['per_page'], $page);
+                $data['allProducts'] = $this->modAdmin->fetchAllProducts();
                 $data['profiles'] = $this->modAdmin->checkProfile(['aId' => $this->session->userdata('aId')]) ->row_array();
                 $data['links'] = $this->pagination->create_links();
 
