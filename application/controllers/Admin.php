@@ -574,13 +574,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     }
                     else{
                         $addData = $this->modAdmin->addModel($data);
-                        if($addData){
-                            setFlashData('alert-success', 'You have successfully added your job', 'admin/newModel');
+                        // if($addData){
+                        //     setFlashData('alert-success', 'You have successfully added your job', 'admin/newModel');
+                        // }
+                        // else{
+                        //     setFlashData('alert-danger', 'You cannot add model right now', 'admin/newModel');
+                        // }
                     }
-                    else{
-                        setFlashData('alert-danger', 'You cannot add model right now', 'admin/newModel');
-                    }
-                   }
                 }
                 else{
                     setFlashData('alert-danger', 'Please check the required fields', 'admin/newModel');
@@ -603,7 +603,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 $this->pagination->initialize($config);
 
                 $page = ($this->uri->segment(3)) ? $this->uri->segment(3): 0;
-                $data['allModels'] = $this->modAdmin->newFetchAllModels($config['per_page'], $page);
+                $data['allModels'] = $this->modAdmin->newFetchAllModels();
                 $data['profiles'] = $this->modAdmin->checkProfile(['aId' => $this->session->userdata('aId')]) ->row_array();
                 $data['links'] = $this->pagination->create_links();
 

@@ -154,7 +154,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         public function addModel($data)
         {
-            return $this->db->insert('models', $data);
+            $dataJson   = json_encode($data);
+            $query      = "tambah-model";
+            $method     = "POST";
+            $data       = $dataJson;
+            $result     = $this->auth->cekAPI($query, $method, $data);var_dump($result);
+            // return $result;
         }
 
         public function getAllModels()
@@ -308,15 +313,36 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             return $result;
         }
 
-        public function newFetchAllModels($limit, $start)
+        // public function newFetchAllModels($limit, $start)
+        // {
+        //     $this->db->select('*');
+        //     $this->db->from('products');
+        //     $this->db->join('models', 'productId=pId');
+        //     $this->db->limit($limit, $start);
+        //     $this->db->order_by('mId', 'asc');
+        //     $query = $this->db->get();
+        //     return $query->result();
+        // }
+
+        public function newFetchAllModels()
         {
-            $this->db->select('*');
-            $this->db->from('products');
-            $this->db->join('models', 'productId=pId');
-            $this->db->limit($limit, $start);
-            $this->db->order_by('mId', 'asc');
-            $query = $this->db->get();
-            return $query->result();
+            $query = "tampil-model";
+            $method = "GET";
+            $data = "";
+
+            $result = $this->auth->cekAPI($query, $method, $data);
+            $data               = array();
+            $data[]             = json_decode($result);
+            var_dump($data);
+            if ($data[0] != null) {
+                $allModels = $data[0]->values;
+    
+                return $allModels;
+            } else {
+                $allModels  = array();
+    
+                return $allModels;
+            }
         }
 
         public function job_detail($mId)
