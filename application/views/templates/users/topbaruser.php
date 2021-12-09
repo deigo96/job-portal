@@ -33,7 +33,7 @@
                                     </button>
                                     <div class="dropdown-menu">
                                         <a class="dropdown-item" href="<?php site_url('home/userProfiles/'. $profile['uId']) ?>"><i class="far fa-user"></i> Profile</a>
-                                        <a class="dropdown-item" href="<?php echo base_url(). 'joblist/activity'; ?>"><i class="fas fa-thumbtack"></i> Activity</a>
+                                        <a class="dropdown-item" href="<?php echo base_url(). 'apply'; ?>"><i class="fas fa-thumbtack"></i> Activity</a>
                                         <a class="dropdown-item" href="<?php echo site_url().'home/logOut'; ?>" type="submit"><i class="fas fa-sign-out-alt"></i> Logout</a>
                                     </div>
                                 <?php endforeach; ?>

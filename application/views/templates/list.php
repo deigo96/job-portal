@@ -260,3 +260,8 @@
         <!--Pagination End  -->
         
     </main>
+    <?php if($this->session->flashdata('error')): ?>
+        <?php echo $this->session->flashdata('error'); ?>
+    <?php endif ; ?>
+    <?php echo isset($modal) ? $modal : ""; ?>
+    <?php echo isset($myModal) ? $myModal : ""; ?>

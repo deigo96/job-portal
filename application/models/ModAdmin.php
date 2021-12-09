@@ -154,11 +154,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
         public function addModel($data)
         {
-            $dataJson   = json_encode($data);
-            $query      = "tambah-model";
-            $method     = "POST";
-            $data       = $dataJson;
-            $result     = $this->auth->cekAPI($query, $method, $data);var_dump($result);
+            return $this->db->insert('models', $data);
+            // $dataJson   = json_encode($data);
+            // $query      = "tambah-model";
+            // $method     = "POST";
+            // $data       = $dataJson;
+            // $result     = $this->auth->cekAPI($query, $method, $data);var_dump($result);
             // return $result;
         }
 
@@ -386,6 +387,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 );
             }
 
+        }
+
+        public function apply($data)
+        {
+            return $this->db->insert('invoices', $data);
         }
         
     }

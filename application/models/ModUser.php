@@ -88,4 +88,26 @@ class ModUser extends CI_Model{
         //     return array();
         // }
     }
+
+    public function getDataApply($uId)
+    {
+        $query = $this->db->query("SELECT invoices.id,
+                                        models.*,
+                                        products.pName
+                                    FROM
+                                        invoices
+                                    LEFT JOIN
+                                        models
+                                    ON
+                                        invoices.modelId = models.mId
+                                    LEFT JOIN
+                                        products
+                                    ON
+                                        models.productId = products.pId
+                                    WHERE 
+                                        invoices.userId = '$uId'
+                                    ");
+        $result = $query->result_array();
+        return $result;
+    }
 }

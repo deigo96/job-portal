@@ -122,4 +122,50 @@ class JobList extends CI_Controller {
             redirect('home/login');
         }
     }
+
+    public function apply($mId) {
+        if($this->session->userdata('uId')) {
+            $data['productId']  = $this->input->post('productId');
+            $date   = date("Y-m-d H:i:s");
+            $data['date']   = $date;
+            $data['status'] = $this->input->post('status');;
+            $data['adminId'] = 1;
+            $data['modelId'] = $this->input->post('mId');
+            $data['userId']    = $this->session->userdata('uId');
+            
+            $dataApply = $this->modAdmin->apply($data);
+            // var_dump($data);
+            if($dataApply) {
+                $data['profiles'] = $this->modUser->checkProfile(['uId' => $this->session->userdata('uId')]) ->row_array();
+                $dataJobs = $this->modAdmin->job_detail($mId);
+                $mId    = $dataJobs[0]['mId'];
+                $modal  = "
+                                <script type='text/javascript'>
+                                    $(window).on('load', function() {
+                                        $('#myModal').modal('show');
+                                    });
+                                </script>
+                ";
+                $data['myModal'] = '
+                                <div class="modal hide fade" id="myModal">
+                                    <div class="modal-header">
+                                        <a class="close" data-dismiss="modal">×</a>
+                                        <h3>Modal header</h3>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>One fine body…</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <a href="#" class="btn">Close</a>
+                                        <a href="#" class="btn btn-primary">Save changes</a>
+                                    </div>
+                                </div>
+                ';
+                $this->session->set_flashdata('error', $modal);
+                // var_dump($data['myModal']);
+                redirect('Joblist');
+                // redirect('Joblist/jobdetail/'.$mId);
+            }
+        }
+    }
 }

@@ -574,12 +574,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     }
                     else{
                         $addData = $this->modAdmin->addModel($data);
-                        // if($addData){
-                        //     setFlashData('alert-success', 'You have successfully added your job', 'admin/newModel');
-                        // }
-                        // else{
-                        //     setFlashData('alert-danger', 'You cannot add model right now', 'admin/newModel');
-                        // }
+                        if($addData){
+                            setFlashData('alert-success', 'You have successfully added your job', 'admin/newModel');
+                        }
+                        else{
+                            setFlashData('alert-danger', 'You cannot add model right now', 'admin/newModel');
+                        }
                     }
                 }
                 else{
