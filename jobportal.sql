@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.1
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 27, 2021 at 12:38 PM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.3
+-- Generation Time: Dec 09, 2021 at 05:12 PM
+-- Server version: 10.4.21-MariaDB
+-- PHP Version: 7.3.31
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+00:00";
 
@@ -84,6 +83,14 @@ CREATE TABLE `invoices` (
   `productId` int(11) NOT NULL,
   `userId` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `invoices`
+--
+
+INSERT INTO `invoices` (`id`, `date`, `status`, `adminId`, `modelId`, `productId`, `userId`) VALUES
+(4, '2021-12-09 14:01:51', 1, 1, 30, 28, 3),
+(15, '2021-12-09 16:55:39', 1, 1, 33, 25, 3);
 
 -- --------------------------------------------------------
 
@@ -188,20 +195,6 @@ INSERT INTO `users` (`uId`, `name`, `email`, `address`, `education`, `skills`, `
 (18, 'John F Kennedy', 'john@gmail.com', 'USA', '-', '-', '827ccb0eea8a706c4c34a16891f84e7b', 'user.png', '-', '2021-06-07', 1),
 (19, 'John Lennon', 'lennon@gmail.com', 'London', 'S1 Ilmu Hukum', 'Mampu bekerja dalam tim', '827ccb0eea8a706c4c34a16891f84e7b', 'user.png', 'CV1.docx', '2021-06-07', 1);
 
--- --------------------------------------------------------
-
---
--- Table structure for table `visitors`
---
-
-CREATE TABLE `visitors` (
-  `id` int(11) NOT NULL,
-  `date` date NOT NULL,
-  `hits` int(11) NOT NULL,
-  `adminId` int(11) NOT NULL,
-  `time` datetime NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
 --
 -- Indexes for dumped tables
 --
@@ -253,14 +246,6 @@ ALTER TABLE `users`
   ADD PRIMARY KEY (`uId`);
 
 --
--- Indexes for table `visitors`
---
-ALTER TABLE `visitors`
-  ADD PRIMARY KEY (`id`),
-  ADD KEY `spec_values_specs_aId_fk` (`hits`),
-  ADD KEY `adminId_2` (`adminId`);
-
---
 -- AUTO_INCREMENT for dumped tables
 --
 
@@ -275,6 +260,12 @@ ALTER TABLE `admin`
 --
 ALTER TABLE `categories`
   MODIFY `cId` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=43;
+
+--
+-- AUTO_INCREMENT for table `invoices`
+--
+ALTER TABLE `invoices`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT for table `models`
@@ -326,13 +317,6 @@ ALTER TABLE `models`
 ALTER TABLE `products`
   ADD CONSTRAINT `products_admin_aId_fk` FOREIGN KEY (`adminId`) REFERENCES `admin` (`aId`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `products_categories_cId_fk` FOREIGN KEY (`categoryId`) REFERENCES `categories` (`cId`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `visitors`
---
-ALTER TABLE `visitors`
-  ADD CONSTRAINT `spec_values_admin_aId_fk` FOREIGN KEY (`adminId`) REFERENCES `admin` (`aId`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `spec_values_specs_aId_fk` FOREIGN KEY (`hits`) REFERENCES `invoices` (`id`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
