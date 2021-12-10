@@ -214,13 +214,25 @@
                             </ul>
                             <div align=center class="apply-btn2">
                                 <!-- <a href="<?php echo base_url('Joblist/add_to_cart/').$jobs[0]['mId'] ?>" class="genric-btn info-border circle arrow">Apply Job</a> -->
-                            
                                 <form action="<?php echo base_url('joblist/apply/').$jobs[0]['mId'] ?>" method="post">
                                     <input type="hidden" name="mId" value="<?php echo $jobs[0]['mId'] ?>">
                                     <input type="hidden" name="productId" value="<?php echo $jobs[0]['productId'] ?>">
                                     <input type="hidden" name="status" value="1">
-                                    <button type="submit" class="genric-btn info-border circle arrow" data-toggle="modsal" data-target="#succes2s_tic">Apply Job</button>
-                                    <!-- <a href="<?php echo base_url('joblist/apply/').$jobs[0]['mId'] ?>" class="genric-btn info-border circle arrow">Apply Job</a> -->
+                                    <?php if(!empty($data)) { ?>
+                                        <?php if($this->session->userdata('uId') == $data[0]['userId'] && $jobs[0]['mId'] == $data[0]['modelId'] && $data[0]['status'] == "") { ?> 
+                                            <button type="submit" class="genric-btn info-border circle arrow" data-toggle="modsal" data-target="#succes2s_tic">Apply Job</button>
+                                        <?php } elseif($this->session->userdata('uId') == $data[0]['userId'] && $jobs[0]['mId'] == $data[0]['modelId'] && $data[0]['status'] == "1") { ?>
+                                            <button type="submit" class="genric-btn info-border circle arrow disable" style="cursor: not-allowed;pointer-events: none;">WAITING FOR RESPONE</button>
+                                        <?php } elseif($this->session->userdata('uId') == $data[0]['userId'] && $jobs[0]['mId'] == $data[0]['modelId'] && $data[0]['status'] == "2") { ?>
+                                            <button type="submit" class="genric-btn danger-border circle arrow disable" style="cursor: not-allowed;pointer-events: none;">REJECTED</button>
+                                        <?php } elseif($this->session->userdata('uId') == $data[0]['userId'] && $jobs[0]['mId'] == $data[0]['modelId'] && $data[0]['status'] == "3") { ?>
+                                            <button type="submit" class="genric-btn success-border circle arrow disable" style="cursor: not-allowed;pointer-events: none;">ACCEPTED</button> 
+                                        <?php } else { ?>
+                                            <button type="submit" class="genric-btn info-border circle arrow" data-toggle="modsal" data-target="#succes2s_tic">Apply Job</button>
+                                        <?php } } else { ?> 
+                                        <button type="submit" class="genric-btn info-border circle arrow" data-toggle="modsal" data-target="#succes2s_tic">Apply Job</button>
+                                    <?php } ?>
+                                        <!-- <a href="<?php echo base_url('joblist/apply/').$jobs[0]['mId'] ?>" class="genric-btn info-border circle arrow">Apply Job</a> -->
                                 </form>
                             </div>
                         </div>

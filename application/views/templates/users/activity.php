@@ -16,6 +16,7 @@
                                 <th>Company</th>
                                 <th>location</th>
                                 <th style="width: 40px">Salary</th>
+                                <th>Status</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -29,6 +30,18 @@
                                 <td><?php echo $items['mName'] ?></td>
                                 <td><?php echo $items['location'] ?></td>
                                 <td><span class="badge bg-info">Rp. <?= number_format($items['price'], 0,',','.'); ?></span></td>
+                                <td>
+                                <?php 
+                                    $status = $items['status'];
+                                    if($status == '1') {
+                                        echo '<span class="badge bg-warning">Waiting</span>';
+                                    }elseif($status == '2') {
+                                        echo '<span class="badge bg-danger">Rejected</span>';
+                                    }elseif($status == '3') {
+                                        echo '<span class="badge bg-success">Accepted</span>';
+                                    }
+                                ?>
+                                </td>
                             </tr>
                             <?php endforeach; ?>
                         </tbody>

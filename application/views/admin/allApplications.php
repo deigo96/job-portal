@@ -79,8 +79,8 @@
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item menu-open">
-                    <a href="#" class="nav-link active">
+                <li class="nav-item">
+                    <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-layer-group"></i>
                         <p>User
                             <i class="right fas fa-angle-left"></i>
@@ -88,15 +88,15 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="<?php echo site_url('admin/allUsers'); ?>" class="nav-link active">
+                            <a href="<?php echo site_url('admin/allUsers'); ?>" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                             <p>All users</p>
                             </a>
                         </li>
                     </ul>
                 </li>
-                <li class="nav-item">
-                    <a href="#" class="nav-link ">
+                <li class="nav-item menu-open">
+                    <a href="#" class="nav-link active">
                         <i class="nav-icon fas fa-layer-group"></i>
                         <p>Application
                             <i class="right fas fa-angle-left"></i>
@@ -104,7 +104,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <a href="<?php echo site_url('admin/allApplications'); ?>" class="nav-link ">
+                            <a href="<?php echo site_url('admin/allApplications'); ?>" class="nav-link active">
                                 <i class="far fa-circle nav-icon"></i>
                             <p>All Application</p>
                             </a>
@@ -137,7 +137,7 @@
                             <div class="card-body">
                                 <!-- <div>
                                     <div class=" w-100 mb-2"> -->
-                                        <?php if($allUsers): ?>
+                                        <?php if($allApplications): ?>
                                             <table id="example" class="table table-bordered table-dark" style="width:100%;">
                                                 <thead class="thead-dark">
                                                     <tr>
@@ -146,46 +146,56 @@
                                                         <th>Address</th>
                                                         <th>CV</th>
                                                         <th>Image</th>
+                                                        <th>Status</th>
                                                         <th></th>
                                                     </tr>
                                                 </thead>
                                                 <?php 
                                                     $i = 0;
-                                                    foreach ($allUsers as $user): 
+                                                    foreach ($allApplications as $application): 
                                                     $i++;
                                                 ?>
                                                     <tr class="">
                                                         <td>
-                                                            <?php echo $user->uId ?>
+                                                            <?php echo $application->uId ?>
                                                         </td>
                                                         <td>
-                                                            <?php echo $user->name ?>
+                                                            <?php echo $application->name ?>
                                                         </td>
                                                         <td>
-                                                            <?php echo $user->address ?>
+                                                            <?php echo $application->pName ?>
                                                         </td>
                                                         <td>
-                                                            <?php echo $user->cv ?>
+                                                            <?php echo $application->mName ?>
                                                         </td>
                                                         <td>
-                                                            <img src="<?php echo base_url('assets/images/profile_pictures/'). $user->images ?>" alt="" class="img-thumbnail img-size-50 mx-auto d-block">
+                                                            <img src="<?php echo base_url('assets/images/profile_pictures/'). $application->images ?>" alt="" class="img-thumbnail img-size-50 mx-auto d-block">
+                                                        </td>
+                                                        <td class="text-right py-0 align-middle">
+                                                        <?php 
+                                                            $status = $application->status;
+                                                            if($status == '1') {
+                                                                echo '<span class="badge bg-warning">Waiting</span>';
+                                                            }elseif($status == '2') {
+                                                                echo '<span class="badge bg-danger">Rejected</span>';
+                                                            }elseif($status == '3') {
+                                                                echo '<span class="badge bg-success">Accepted</span>';
+                                                            }
+                                                        ?>
                                                         </td>
                                                         <td class="text-right py-0 align-middle">
                                                             <div class="btn-group btn-group-sm">
-                                                                <a href="<?php echo base_url('admin/userDetail/'. $user->uId); ?>" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i> View</a>
-                                                                <a href="<?php echo base_url('admin/userDetail/'. $user->uId); ?>" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Delete</a>
+                                                                <!-- <a href="<?php echo base_url('admin/userDetail/'. $user->uId); ?>" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i> View</a>
+                                                                <a href="<?php echo base_url('admin/userDetail/'. $user->uId); ?>" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Delete</a> -->
+                                                                <a href="" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i> View</a>
+                                                                <a href="" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Delete</a>
                                                             </div> 
                                                         </td>
-                                                        <!-- <td class="align-middle">
-                                                            <div class="btn-group btn-group-sm">
-                                                                <a href="<?php echo base_url('admin/userDetail/'. $user->uId); ?>" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Delete</a>
-                                                            </div> 
-                                                        </td> -->
                                                     </tr>
                                                 <?php endforeach; ?>
                                             </table>         
                                             <?php else: ?>
-                                                Users not available
+                                                Application not available
                                         <?php endif; ?>
                                     </div>
                                 </div>

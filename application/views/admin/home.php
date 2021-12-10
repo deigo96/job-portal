@@ -242,15 +242,13 @@
                 <!-- /.card -->
               </div>
               <!-- /.col -->
-
               <div class="col-md-6">
-                <!-- USERS LIST -->
+                <!-- PRODUCT LIST -->
                 <div class="card">
                   <div class="card-header">
-                    <h3 class="card-title">Latest Members</h3>
+                    <h3 class="card-title">New Members</h3>
 
                     <div class="card-tools">
-                      <span class="badge badge-danger">12 New Members</span>
                       <button type="button" class="btn btn-tool" data-card-widget="collapse">
                         <i class="fas fa-minus"></i>
                       </button>
@@ -260,36 +258,39 @@
                     </div>
                   </div>
                   <!-- /.card-header -->
-                  <?php if($allUsers): ?>
                   <div class="card-body p-0">
-                    <ul class="users-list clearfix">
-                      <?php foreach ($allUsers as $user): ?>
-                      <li clas>
-                        <img src="<?php echo base_url('assets/images/profile_pictures/'. $user->images); ?>" alt="User Image" style="width:50%;height:50%;" class="img-thumbnail mx-auto d-block">
-                        <a class="users-list-name" href="<?php echo base_url('admin/userDetail/'.$user->uId); ?>"><?php echo $user->name ?></a>
-                        <span class="users-list-date"><?php echo $user->date ?></span>
+                    <ul class="products-list product-list-in-card pl-0 pr-0 clearfix">
+                    <?php foreach ($allUsers as $user): ?>
+                      <li class="item">
+                        <div class="product-img">
+                          <img src="<?php echo base_url('assets/images/profile_pictures/'. $user->images); ?>" alt="Product Image" class="img-size-50 img-thumbnail">
+                        </div>
+                        <div class="product-info">
+                          <a href="<?php echo base_url('admin/userDetail/'.$user->uId); ?>" class="product-title"> <?php echo $user->name ?>
+                            <span class="badge badge-warning float-right"><?php echo $user->date ?></span></a>
+                          <span class="product-description">
+                            <?= $recent->mName ?>
+                          </span>
+                        </div>
                       </li>
-                    <?php endforeach; ?>
+                      <!-- /.item -->
+                    <?php endforeach; ?>  
                     </ul>
-                    <!-- /.users-list -->
                   </div>
-                  <?php endif; ?>
                   <!-- /.card-body -->
                   <div class="card-footer text-center">
-                    <a href="<?php echo base_url('admin/allUsers'); ?>">View All Users</a>
+                    <a href="<?php echo base_url('admin/allUsers') ?>" class="uppercase">View All Members</a>
                   </div>
                   <!-- /.card-footer -->
                 </div>
-                <!--/.card -->
+                <!-- /.card -->
               </div>
-              <!-- /.col -->
-            </div>
             <!-- /.row -->
-
+            </div>
             <!-- TABLE: LATEST ORDERS -->
             <div class="card">
               <div class="card-header border-transparent">
-                <h3 class="card-title">Latest Apply</h3>
+                <h3 class="card-title">Latest Applied</h3>
 
                 <div class="card-tools">
                   <button type="button" class="btn btn-tool" data-card-widget="collapse">
@@ -314,15 +315,15 @@
                     </tr>
                     </thead>
                     <tbody>
-                      <?php foreach($this->cart->contents() as $items): ?>
+                      <?php foreach($dataApply as $items) { ?>
                         <tr>
                           <td><a href="#"><?= $items['id'] ?></a></td>
                           <td><?= $items['pName'] ?></td>
-                          <td><?= $items['name'] ?></td>
+                          <td><?= $items['mName'] ?></td>
                           <td><?= $items['location'] ?></td>
                           <td><span class="badge badge-success">Rp. <?= number_format($items['price'], 0,',','.'); ?></span></td>
                         </tr>
-                      <?php endforeach;?>
+                      <?php } ?>
                     </tbody>
                   </table>
                 </div>
@@ -330,8 +331,7 @@
               </div>
               <!-- /.card-body -->
               <div class="card-footer clearfix">
-                <!-- <a href="javascript:void(0)" class="btn btn-sm btn-info float-left">Place New Order</a> -->
-                <a href="javascript:void(0)" class="btn btn-sm btn-primary float-right">View All</a>
+                <a href="<?php echo base_url('Admin/allApplications') ?> " class="btn btn-sm btn-primary float-right">View All</a>
               </div>
               <!-- /.card-footer -->
             </div>

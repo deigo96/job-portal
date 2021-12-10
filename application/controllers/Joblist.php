@@ -41,8 +41,10 @@ class JobList extends CI_Controller {
             $data['profiles'] = $this->modUser->checkProfile(['uId' => $this->session->userdata('uId')]) ->row_array();
             $data['jobs'] = $this->modAdmin->job_detail($mId);
             $data['models'] = $this->modAdmin->checkProductById($mId);
-
-
+            $data['data']  = $this->modUser->getDataApplybyId($mId);
+            var_dump($data['jobs']);
+            var_dump($data['data']);
+// var_dump($data['data']);
             $this->load->view('templates/header');
             $this->load->view('templates/users/topbar', $data);
             $this->load->view('templates/jobdetails', $data);

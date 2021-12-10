@@ -17,7 +17,11 @@ class Auth
 			$CI->curl->patch($data);
 		}
 
-		$result = $CI->curl->execute();
-		return $result;
+		try {
+			$result = $CI->curl->execute();
+			return $result;
+		} catch (Exception $e) {
+			return $e;
+		}
 	}
 }

@@ -92,6 +92,7 @@ class ModUser extends CI_Model{
     public function getDataApply($uId)
     {
         $query = $this->db->query("SELECT invoices.id,
+                                        invoices.status,
                                         models.*,
                                         products.pName
                                     FROM
@@ -106,6 +107,31 @@ class ModUser extends CI_Model{
                                         models.productId = products.pId
                                     WHERE 
                                         invoices.userId = '$uId'
+                                    ");
+        $result = $query->result_array();
+        return $result;
+    }
+
+    public function getDataApplybyId($mId)
+    {
+        $query = $this->db->query("SELECT invoices.id,
+                                        invoices.status,
+                                        invoices.userId,
+                                        invoices.modelId,
+                                        models.*,
+                                        products.pName
+                                    FROM
+                                        invoices
+                                    LEFT JOIN
+                                        models
+                                    ON
+                                        invoices.modelId = models.mId
+                                    LEFT JOIN
+                                        products
+                                    ON
+                                        models.productId = products.pId
+                                    WHERE 
+                                        invoices.modelId = '$mId'
                                     ");
         $result = $query->result_array();
         return $result;

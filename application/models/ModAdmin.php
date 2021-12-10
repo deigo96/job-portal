@@ -243,6 +243,21 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             return $this->db->get_where('users', array('uId'=>$uId))->result_array();
         }
 
+        public function fetchAllUsersAdmin($limit, $start)
+        {
+            $this->db->limit($limit, $start);
+            $this->db->order_by('uId', 'asc');
+            $this->db->limit('5');
+            $query = $this->db->get_where('users', array('aId'=>1));
+            if($query->num_rows() > 0){
+                foreach ($query->result() as $row) {
+                    $data[] = $row;
+                }
+                return $data;
+            }
+            return false;
+        }
+
         public function fetchAllUsers($limit, $start)
         {
             $this->db->limit($limit, $start);
@@ -258,9 +273,82 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             return false;
         }
 
+        public function fetchAllApplications($limit, $start)
+        {
+            $aId = $this->session->userdata('aId');
+            $query = $this->db->query("SELECT invoices.id,
+                                        invoices.status,
+                                        invoices.userId,
+                                        invoices.modelId,
+                                        models.*,
+                                        products.pName,
+                                        users.*
+                                    FROM
+                                        invoices
+                                    LEFT JOIN
+                                        models
+                                    ON
+                                        invoices.modelId = models.mId
+                                    LEFT JOIN
+                                        users
+                                    ON
+                                        invoices.userId = users.uId
+                                    LEFT JOIN
+                                        products
+                                    ON
+                                        models.productId = products.pId
+                                    WHERE 
+                                        invoices.adminId = '$aId'
+                                    ORDER BY 
+                                        invoices.id
+                                        DESC
+                                    ");
+            if($query->num_rows() > 0){
+                foreach ($query->result() as $row) {
+                    $data[] = $row;
+                }
+                return $data;
+            }
+            return false;
+        }
+
         public function getAllUsers()
         {
             return $this->db->get_where('users', array('aId'=>1))->num_rows();
+        }
+
+        public function getAllApplications()
+        {
+            $aId = $this->session->userdata('aId');
+            $query = $this->db->query("SELECT invoices.id,
+                                        invoices.status,
+                                        invoices.userId,
+                                        invoices.modelId,
+                                        models.*,
+                                        products.pName,
+                                        users.*
+                                    FROM
+                                        invoices
+                                    LEFT JOIN
+                                        models
+                                    ON
+                                        invoices.modelId = models.mId
+                                    LEFT JOIN
+                                        users
+                                    ON
+                                        invoices.userId = users.uId
+                                    LEFT JOIN
+                                        products
+                                    ON
+                                        models.productId = products.pId
+                                    WHERE 
+                                        invoices.adminId = '$aId'
+                                    ORDER BY 
+                                        invoices.id
+                                        DESC
+                                    ");
+        $result = $query->num_rows();
+        return $result;
         }
 
         public function jobListall()
@@ -392,6 +480,35 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         public function apply($data)
         {
             return $this->db->insert('invoices', $data);
+        }
+
+        public function getAllDataApply()
+        {
+            $query = $this->db->query("SELECT invoices.id,
+                                        invoices.status,
+                                        invoices.userId,
+                                        invoices.modelId,
+                                        models.mName,
+                                        models.price,
+                                        models.location,
+                                        products.pName
+                                    FROM
+                                        invoices
+                                    LEFT JOIN
+                                        models
+                                    ON
+                                        invoices.modelId = models.mId
+                                    LEFT JOIN
+                                        products
+                                    ON
+                                        models.productId = products.pId
+                                    ORDER BY
+                                        invoices.id
+                                        DESC
+                                    LIMIT 10
+                                    ");
+        $result = $query->result_array();
+        return $result;
         }
         
     }

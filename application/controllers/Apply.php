@@ -7,7 +7,7 @@ class Apply extends CI_Controller {
             $uId = $this->session->userdata('uId');
             $data['profiles'] = $this->modUser->checkProfile(['uId' => $this->session->userdata('uId')]) ->row_array();
             $apply['data']  = $this->modUser->getDataApply($uId);
-
+            // var_dump($apply['data']);
             $this->load->view('templates/header');
             $this->load->view('templates/users/topbar', $data);
             $this->load->view('templates/users/activity',$apply);
