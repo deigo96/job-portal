@@ -147,7 +147,7 @@
                                                         <th>CV</th>
                                                         <th>Image</th>
                                                         <th>Status</th>
-                                                        <th></th>
+                                                        <th>Action</th>
                                                     </tr>
                                                 </thead>
                                                 <?php 
@@ -157,7 +157,7 @@
                                                 ?>
                                                     <tr class="">
                                                         <td>
-                                                            <?php echo $application->uId ?>
+                                                            <?php echo $application->id ?>
                                                         </td>
                                                         <td>
                                                             <?php echo $application->name ?>
@@ -171,7 +171,7 @@
                                                         <td>
                                                             <img src="<?php echo base_url('assets/images/profile_pictures/'). $application->images ?>" alt="" class="img-thumbnail img-size-50 mx-auto d-block">
                                                         </td>
-                                                        <td class="text-right py-0 align-middle">
+                                                        <td class="text-center py-0 align-middle">
                                                         <?php 
                                                             $status = $application->status;
                                                             if($status == '1') {
@@ -183,12 +183,11 @@
                                                             }
                                                         ?>
                                                         </td>
-                                                        <td class="text-right py-0 align-middle">
+                                                        <td class="text-center py-0 align-middle">
                                                             <div class="btn-group btn-group-sm">
                                                                 <!-- <a href="<?php echo base_url('admin/userDetail/'. $user->uId); ?>" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i> View</a>
                                                                 <a href="<?php echo base_url('admin/userDetail/'. $user->uId); ?>" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Delete</a> -->
-                                                                <a href="" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i> View</a>
-                                                                <a href="" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i> Delete</a>
+                                                                <a href="<?php echo base_url('admin/proccess/'.$application->id) ?>" class="btn btn-primary btn-sm"><i class="fas fa-eye"></i> View</a>
                                                             </div> 
                                                         </td>
                                                     </tr>

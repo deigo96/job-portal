@@ -12,7 +12,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 $this->pagination->initialize($config);
 
                 $page = ($this->uri->segment(3)) ? $this->uri->segment(3): 0;
-                $data['allUsers'] = $this->modAdmin->fetchAllUsers($config['per_page'], $page);
+                $data['allUsers'] = $this->modAdmin->fetchAllUsersAdmin($config['per_page'], $page);
                 $data['links'] = $this->pagination->create_links();
 
                 $data['total_customers'] = $this->modAdmin->count_all_customers();
@@ -21,6 +21,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 $data['total_categories'] = $this->modAdmin->count_all_categories();
                 $data['profiles'] = $this->modAdmin->checkProfile(['aId' => $this->session->userdata('aId')]) ->row_array();
                 $data['jobRecent'] = $this->modAdmin->jobRecent();
+                $data['dataApply']  = $this->modAdmin->getAllDataApply();
 
                 $this->load->view('admin/header', $data);                
                 $this->load->view('admin/home', $data);                
@@ -574,6 +575,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     }
                     else{
                         $addData = $this->modAdmin->addModel($data);
+                        // var_dump($addData);
                         if($addData){
                             setFlashData('alert-success', 'You have successfully added your job', 'admin/newModel');
                         }
@@ -810,5 +812,76 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $this->load->view('admin/header', $data);
             $this->load->view('admin/invoice', $data);
             $this->load->view('admin/footer', $data);
+        }
+
+        public function allApplications()
+        {
+            if(adminLoggedIn()){
+                $config['base_url'] = site_url('admin/allUsers');
+                $totalRows = $this->modAdmin->getAllApplications();
+                $config['total_rows'] = $totalRows;
+                $config['per_page'] = 10;
+                $config['uri_segment'] = 3;
+                $config['use_global_url_suffix'] = FALSE;
+                $config['use_page_numbers'] = TRUE;
+                $config['num_links'] = 2;
+                $config['first_link']       = 'First';
+                $config['last_link']        = 'Last';
+                $config['next_link']        = 'Next';
+                $config['prev_link']        = 'Prev';
+                $config['full_tag_open']    = '<div class="pagging text-center"><nav><ul class="pagination justify-content-center">';
+                $config['full_tag_close']   = '</ul></nav></div>';
+                $config['num_tag_open']     = '<li class="page-item"><span class="page-link">';
+                $config['num_tag_close']    = '</span></li>';
+                $config['cur_tag_open']     = '<li class="page-item active"><span class="page-link">';
+                $config['cur_tag_close']    = '<span class="sr-only">(current)</span></span></li>';
+                $config['next_tag_open']    = '<li class="page-item"><span class="page-link">';
+                $config['next_tagl_close']  = '<span aria-hidden="true">&raquo;</span></span></li>';
+                $config['prev_tag_open']    = '<li class="page-item"><span class="page-link">';
+                $config['prev_tagl_close']  = '</span>Next</li>';
+                $config['first_tag_open']   = '<li class="page-item"><span class="page-link">';
+                $config['first_tagl_close'] = '</span></li>';
+                $config['last_tag_open']    = '<li class="page-item"><span class="page-link">';
+                $config['last_tagl_close']  = '</span></li>';
+                $this->load->library('pagination');
+                $this->pagination->initialize($config);
+
+                $page = ($this->uri->segment(3)) ? $this->uri->segment(3): 0;
+                $data['allApplications'] = $this->modAdmin->fetchAllApplications($config['per_page'], $page);
+                $data['profiles'] = $this->modAdmin->checkProfile(['aId' => $this->session->userdata('aId')]) ->row_array();
+                $data['links'] = $this->pagination->create_links();
+
+                $this->load->view('admin/header', $data);
+                $this->load->view('admin/allApplications', $data);
+                $this->load->view('admin/footer', $data);
+            }
+            else{
+                setFlashData('alert-danger', 'Please login first to add your Model', 'admin/login');
+            }
+        }
+
+        public function proccess($id)
+        {
+            if(adminLoggedIn()){
+                if(!empty($id) && isset($id)){
+                    $data['action'] = $this->modAdmin->getDataById($id);
+                    var_dump($data['action']);
+                    if(count($data['action']) == 1){
+                        $data['profiles'] = $this->modAdmin->checkProfile(['aId' => $this->session->userdata('aId')]) ->row_array();
+                        $this->load->view('admin/header', $data);
+                        $this->load->view('admin/proccess', $data);
+                        $this->load->view('admin/footer', $data);
+                    }
+                    else{
+                        setFlashData('alert-danger', 'Model not found', 'admin/allModels');
+                    }
+                }
+                else {
+                    setFlashData('alert-danger', 'Something went wrong', 'admin/allModels');
+                }
+            }
+            else{
+                setFlashData('alert-danger', 'Please login first to edit your category', 'admin/login');
+            }
         }
     }

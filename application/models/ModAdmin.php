@@ -155,6 +155,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
         public function addModel($data)
         {
             return $this->db->insert('models', $data);
+            // var_dump($data);
+            // $data['adminId'] = $this->session->userdata('aId');
             // $dataJson   = json_encode($data);
             // $query      = "tambah-model";
             // $method     = "POST";
@@ -509,6 +511,34 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                     ");
         $result = $query->result_array();
         return $result;
+        }
+
+        public function getDataById($id)
+        {
+            $query = $this->db->query("SELECT invoices.*,
+                                            models.mName,
+                                            models.mDescription,
+                                            models.location,
+                                            products.pName,
+                                            users.*
+                                        FROM
+                                            invoices
+                                        LEFT JOIN
+                                            models
+                                        ON
+                                            invoices.modelId = models.mId
+                                        LEFT JOIN
+                                            users
+                                        ON
+                                            invoices.userId = users.uId
+                                        LEFT JOIN
+                                            products
+                                        ON
+                                            models.productId = products.pId
+                                        WHERE
+                                            invoices.id = '$id'
+                                        ");
+            return $query->row();
         }
         
     }

@@ -114,6 +114,7 @@ class ModUser extends CI_Model{
 
     public function getDataApplybyId($mId)
     {
+        $id = $this->session->userdata('uId');
         $query = $this->db->query("SELECT invoices.id,
                                         invoices.status,
                                         invoices.userId,
@@ -132,6 +133,7 @@ class ModUser extends CI_Model{
                                         models.productId = products.pId
                                     WHERE 
                                         invoices.modelId = '$mId'
+                                        AND invoices.userId = '$id'
                                     ");
         $result = $query->result_array();
         return $result;
