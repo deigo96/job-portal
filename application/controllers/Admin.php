@@ -884,4 +884,25 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 setFlashData('alert-danger', 'Please login first to edit your category', 'admin/login');
             }
         }
+        
+        public function actionProccess()
+        {
+            if(adminLoggedIn()) {
+                $id = $this->input->post('id');
+                if($this->input->post('accept') == 'ACCEPT'){
+                    $data['status'] = 3;
+                } elseif($this->input->post('reject') == 'REJECT') {
+                    $data['status'] = 2;
+                }
+
+                $action = $this->modAdmin->updateProccess($data, $id);
+                if($action) {
+                    setFlashData('alert-success', 'You have successfully updated your data', 'admin/allApplications');
+                } else {
+                    setFlashData('alert-danger', 'Something went wrong', 'admin/allApplications');
+                }
+            } else {
+                setFlashData('alert-danger', 'Please login first', 'admin/login');
+            }
+        }
     }

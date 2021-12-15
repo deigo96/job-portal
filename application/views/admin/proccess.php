@@ -170,6 +170,30 @@
                                 <div class="form-group">
                                     <textarea name="" id="" cols="3" rows="3" class="form-control"><?php echo $action->mDescription ?></textarea>
                                 </div>
+                                <?php if($action->status == 3) { ?>
+                                    <div class="form-group">
+                                        <button class="btn btn-success offset-5" style="cursor:default">ACCEPTED</button>
+                                    </div>   
+                                <?php } elseif ($action->status == 2) { ?> 
+                                    <div class="form-group">
+                                        <button class="btn btn-danger offset-5" style="cursor:default">REJECTED</button>
+                                    </div>   
+                                <?php } else { ?> 
+                                    <form action="<?php echo base_url('admin/actionProccess/') ?>" method="post">
+                                        <div class="row">
+                                            <div class="col-md-2">
+                                                <input type="hidden" name="id" value="<?php echo $action->id ?>">
+                                            </div>
+                                            <div class="col-md-4">
+                                                <button type="submit" name="accept" value="ACCEPT" class="btn btn-success btn-block">ACCEPT</button>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <button type="submit" name="reject" value="REJECT" class="btn btn-danger btn-block">REJECT</button>
+                                            </div>
+                                            <div class="col-md-2"></div>
+                                        </div>
+                                    </form>    
+                                <?php } ?>
                             </div>
                         </div>                    
                     </div>

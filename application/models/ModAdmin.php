@@ -540,5 +540,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                         ");
             return $query->row();
         }
+
+        public function updateProccess($data, $id)
+        {
+            $this->db->where('id', $id);
+            return $this->db->update('invoices', $data);
+        }
         
     }
