@@ -471,22 +471,22 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                 $oldImage = $this->input->post('oldImg', true);
 
                 if(!empty($data['pName']) && !empty($data['categoryId'])){
-                    // if(isset($_FILES['prodDp']) && is_uploaded_file($_FILES['prodDp']['tmp_name'])){
-                    //     $path = realpath(APPPATH.'../assets/images/products/');
-                    //     $config['upload_path'] = $path;
-                    //     $config['max_size'] = 400;
-                    //     $config['allowed_types'] = 'gif|png|jpg|jpeg';
-                    //     $this->load->library('upload', $config);
-                    //     if(!$this->upload->do_upload('prodDp')){
-                    //         $error = $this->upload->display_errors();
-                    //         setFlashData('alert-danger', $error, 'admin/newProduct');
-                    //     }
-                    //     else{
-                    //         $fileName = $this->upload->data();
-                    //         $data['pDp'] = $fileName['file_name'];
-                    //         $data['pDate'] = date('Y-m-d H:i:s');
-                    //     }
-                    // }
+                    if(isset($_FILES['prodDp']) && is_uploaded_file($_FILES['prodDp']['tmp_name'])){
+                        $path = realpath(APPPATH.'../assets/images/products/');
+                        $config['upload_path'] = $path;
+                        $config['max_size'] = 400;
+                        $config['allowed_types'] = 'gif|png|jpg|jpeg';
+                        $this->load->library('upload', $config);
+                        if(!$this->upload->do_upload('prodDp')){
+                            $error = $this->upload->display_errors();
+                            setFlashData('alert-danger', $error, 'admin/newProduct');
+                        }
+                        else{
+                            $fileName = $this->upload->data();
+                            $data['pDp'] = $fileName['file_name'];
+                            $data['pDate'] = date('Y-m-d H:i:s');
+                        }
+                    }
 
                     $addData = $this->modAdmin->checkProduct($data);
                     if($addData->num_rows() > 0 ){
@@ -495,11 +495,11 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     else{
                         $addData = $this->modAdmin->updateProduct($data, $pId);
                         if($addData){
-                            // if(!empty($data['pDp']) && isset($data['pDp'])){
-                            //     if(file_exists($path.'/'.$oldImage)){
-                            //         unlink($path.'/'.$oldImage);
-                            //     }
-                            // }
+                            if(!empty($data['pDp']) && isset($data['pDp'])){
+                                if(file_exists($path.'/'.$oldImage)){
+                                    unlink($path.'/'.$oldImage);
+                                }
+                            }
                             setFlashData('alert-success', 'You have successfully updated your product', 'admin/allProducts');
                         }
                         else{
@@ -575,7 +575,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                     }
                     else{
                         $addData = $this->modAdmin->addModel($data);
-                        // var_dump($addData);
                         if($addData){
                             setFlashData('alert-success', 'You have successfully added your job', 'admin/newModel');
                         }
@@ -690,7 +689,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                         setFlashData('alert-danger', 'The product already exist', 'admin/allModels');     
                     }
                     else{
-                        $addData = $this->modAdmin->updateModel($data, $modelId);
+                        $addData = $this->modAdmin->updateModel($data, $modelId);var_dump($addData);
                         if($addData){
                             if(!empty($data['mDp']) && isset($data['mDp'])){
                                 if(file_exists($path.'/'.$oldImage)){
@@ -698,7 +697,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
                                 }
                             }
                             setFlashData('alert-success', 'You have successfully updated your model', 'admin/allModels');
-                    }
+                        }
                         else{
                             setFlashData('alert-danger', 'You cannot update model right now', 'admin/allModels');
                         }
@@ -865,7 +864,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             if(adminLoggedIn()){
                 if(!empty($id) && isset($id)){
                     $data['action'] = $this->modAdmin->getDataById($id);
-                    var_dump($data['action']);
                     if(count($data['action']) == 1){
                         $data['profiles'] = $this->modAdmin->checkProfile(['aId' => $this->session->userdata('aId')]) ->row_array();
                         $this->load->view('admin/header', $data);

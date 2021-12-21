@@ -4,7 +4,27 @@ class Home extends CI_Controller{
     public function index()
     {
         $data['jobList'] =$this->modAdmin->jobList();
-        $data['jobListing'] =$this->modAdmin->jobListing();
+        $joblisting = $this->modAdmin->jobListing();
+        $data['jobListing'] = $joblisting;
+        $jl1 = $joblisting[0]['pId'];
+        $jl2 = $joblisting[1]['pId'];
+        $jl3 = $joblisting[2]['pId'];
+        $jl4 = $joblisting[3]['pId'];
+        $jl5 = $joblisting[4]['pId'];
+        $jl6 = $joblisting[5]['pId'];
+        $jl7 = $joblisting[6]['pId'];
+        $jl8 = $joblisting[7]['pId'];
+        $arrayList1 = $this->modAdmin->arrayList($jl1);
+        $arrayList2 = $this->modAdmin->arrayList2($jl2);
+        $arrayList3 = $this->modAdmin->arrayList3($jl3);
+        $arrayList4 = $this->modAdmin->arrayList4($jl4);
+        $arrayList5 = $this->modAdmin->arrayList5($jl5);
+        $arrayList6 = $this->modAdmin->arrayList6($jl6);
+        $arrayList7 = $this->modAdmin->arrayList7($jl7);
+        $arrayList8 = $this->modAdmin->arrayList8($jl8);
+        $list = array();
+        $list = [$arrayList1,$arrayList2,$arrayList3,$arrayList4,$arrayList5,$arrayList6,$arrayList7,$arrayList8];
+        $data['countList'] = $list;
         $data['job_categories'] = $this->modAdmin->job_categories();
         $data['title'] = "UBSIPORTAL";
         if($this->session->userdata('uId')) {

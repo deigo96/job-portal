@@ -187,7 +187,7 @@
                         </div>
                           <!-- job single End -->
                        
-                        <div class="job-post-details">
+                        <div class="job-post-details" style="padding-left:30px;">
                             <div class="post-details1 mb-50">
                                 <!-- Small Section Tittle -->
                                 <div class="small-section-tittle">

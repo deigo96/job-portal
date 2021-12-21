@@ -18,7 +18,7 @@
                     </div>
                     <div class="services-cap">
                         <h5><a href="<?php echo base_url('joblist/job_category/').$jobListing[0]['pId'] ?>"><?php echo $jobListing[0]['pName'] ?></a></h5>
-                        <span>(653)</span>
+                        <span>( <?php echo $countList[0]->countList ?> )</span>
                     </div>
                 </div>
             </div>
@@ -29,7 +29,7 @@
                     </div>
                     <div class="services-cap">
                         <h5><a href="<?php echo base_url('joblist/job_category/').$jobListing[1]['pId'] ?>"><?php echo $jobListing[1]['pName'] ?></a></h5>
-                        <span>(<?php  echo $job_categories; ?>)</span>
+                        <span>( <?php echo $countList[1]->countList ?> )</span>
                     </div>
                 </div>
             </div>
@@ -40,7 +40,7 @@
                     </div>
                     <div class="services-cap">
                         <h5><a href="<?php echo base_url('joblist/job_category/').$jobListing[1]['pId'] ?>"><?php echo $jobListing[2]['pName'] ?></a></h5>
-                        <span>(658)</span>
+                        <span>( <?php echo $countList[2]->countList ?> )</span>
                     </div>
                 </div>
             </div>
@@ -51,7 +51,7 @@
                     </div>
                     <div class="services-cap">
                         <h5><a href="<?php echo base_url('joblist/job_category/').$jobListing[3]['pId'] ?>"><?php echo $jobListing[3]['pName'] ?></a></h5>
-                        <span>(658)</span>
+                        <span>( <?php echo $countList[3]->countList ?> )</span>
                     </div>
                 </div>
             </div>
@@ -62,7 +62,7 @@
                     </div>
                     <div class="services-cap">
                         <h5><a href="<?php echo base_url('joblist/job_category/').$jobListing[4]['pId'] ?>"><?php echo $jobListing[4]['pName'] ?></a></h5>
-                        <span>(658)</span>
+                        <span>( <?php echo $countList[4]->countList ?> )</span>
                     </div>
                 </div>
             </div>
@@ -73,7 +73,7 @@
                     </div>
                     <div class="services-cap">
                         <h5><a href="<?php echo base_url('joblist/job_category/').$jobListing[5]['pId'] ?>"><?php echo $jobListing[5]['pName'] ?></a></h5>
-                        <span>(658)</span>
+                        <span>( <?php echo $countList[5]->countList ?> )</span>
                     </div>
                 </div>
             </div>
@@ -84,7 +84,7 @@
                     </div>
                     <div class="services-cap">
                         <h5><a href="<?php echo base_url('joblist/job_category/').$jobListing[6]['pId'] ?>"><?php echo $jobListing[6]['pName'] ?></a></h5>
-                        <span>(658)</span>
+                        <span>( <?php echo $countList[6]->countList ?> )</span>
                     </div>
                 </div>
             </div>
@@ -95,7 +95,7 @@
                     </div>
                     <div class="services-cap">
                         <h5><a href="<?php echo base_url('joblist/job_category/').$jobListing[7]['pId'] ?>"><?php echo $jobListing[7]['pName'] ?></a></h5>
-                        <span>(658)</span>
+                        <span>( <?php echo $countList[7]->countList ?> )</span>
                     </div>
                 </div>
             </div>

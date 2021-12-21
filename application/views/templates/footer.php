@@ -22,7 +22,7 @@
                             <h4>Contact Info</h4>
                             <ul>
                                 <li>
-                                <p>Address :Perum KSB Blok J13 No.20</p>
+                                <p>Address :Jl.Riverside 1 No.26 Waterfront Cibatu</p>
                                 </li>
                                 <li><a href="#">Phone : +62 82135277397</a></li>
                                 <li><a href="#">Email : deigosiahaan@gmail.com</a></li>
@@ -36,7 +36,7 @@
                         <div class="footer-tittle">
                             <h4>Important Link</h4>
                             <ul>
-                                <li><a href="https://github.com/deigo96/job-portal/tree/master" target="_blank"> View Project</a></li>
+                                <li><a href="https://github.com/deigo96/job-portal.git" target="_blank"> View Project</a></li>
                                 <li><a href="<?= base_url('contact'); ?>">Contact Us</a></li>
                                 <li><a href="#">Testimonial</a></li>
                                 <li><a href="#">Proparties</a></li>
@@ -87,7 +87,7 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
                             </div>
                             <div class="footer-copy-right">
                                <p class="offset-3 text-center">
-                                Modified by <a href="https://github.com/deigo96/job-portal/tree/master" target="_blank" class="text-info">Deigo Siahaan</a>
+                                Modified by <a href="https://github.com/deigo96/job-portal.git" target="_blank" class="text-info">Deigo Siahaan</a>
                                </p>
                             </div>
                         </div>

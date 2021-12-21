@@ -94,7 +94,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $result = $this->auth->cekAPI($query, $method, $data);
             $data               = array();
             $data[]             = json_decode($result);
-            var_dump($data);
             if ($data[0] != null) {
                 $allProducts = $data[0]->values;
     
@@ -161,6 +160,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             // $query      = "tambah-model";
             // $method     = "POST";
             // $data       = $dataJson;
+            // var_dump($data);
             // $result     = $this->auth->cekAPI($query, $method, $data);var_dump($result);
             // return $result;
         }
@@ -201,10 +201,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             return $this->db->get_where('models', array('mId'=>$mId))->result_array();
         }
 
-        public function updateModel($data, $modelID)
+        public function updateModel($data, $modelId)
         {
-            $this->db->where('mId', $modelID);
+            $this->db->where('mId', $modelId);
             return $this->db->update('models', $data);
+            // $id = $this->input->post('mDi', true);
+            // $dataJson   = json_encode($data);
+            // $query      = "ubah-model/$id";
+            // $method     = "PATCH";
+            // $data       = $dataJson;
+            // // var_dump($data);
+            // $result     = $this->auth->cekAPI($query, $method, $data);
+            // var_dump($result);
         }
 
         public function getModels()
@@ -424,7 +432,6 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $result = $this->auth->cekAPI($query, $method, $data);
             $data               = array();
             $data[]             = json_decode($result);
-            var_dump($data);
             if ($data[0] != null) {
                 $allModels = $data[0]->values;
     
@@ -546,5 +553,78 @@ defined('BASEPATH') OR exit('No direct script access allowed');
             $this->db->where('id', $id);
             return $this->db->update('invoices', $data);
         }
+        
+        public function arrayList($jl1)
+        {
+            $query = $this->db->query("SELECT COUNT('mId') as countList
+                                        FROM models
+                                        WHERE productId = '$jl1'
+                                    ");
+            return $query->row();
+        }
+
+        public function arrayList2($jl2)
+        {
+            $query = $this->db->query("SELECT COUNT('mId') as countList
+                                        FROM models
+                                        WHERE productId = '$jl2'
+                                    ");
+            return $query->row();
+        }
+
+        public function arrayList3($jl3)
+        {
+            $query = $this->db->query("SELECT COUNT('mId') as countList
+                                        FROM models
+                                        WHERE productId = '$jl3'
+                                    ");
+            return $query->row();
+        }
+
+        public function arrayList4($jl4)
+        {
+            $query = $this->db->query("SELECT COUNT('mId') as countList
+                                        FROM models
+                                        WHERE productId = '$jl4'
+                                    ");
+            return $query->row();
+        }
+
+        public function arrayList5($jl5)
+        {
+            $query = $this->db->query("SELECT COUNT('mId') as countList
+                                        FROM models
+                                        WHERE productId = '$jl5'
+                                    ");
+            return $query->row();
+        }
+
+        public function arrayList6($jl6)
+        {
+            $query = $this->db->query("SELECT COUNT('mId') as countList
+                                        FROM models
+                                        WHERE productId = '$jl6'
+                                    ");
+            return $query->row();
+        }
+
+        public function arrayList7($jl7)
+        {
+            $query = $this->db->query("SELECT COUNT('mId') as countList
+                                        FROM models
+                                        WHERE productId = '$jl7'
+                                    ");
+            return $query->row();
+        }
+
+        public function arrayList8($jl8)
+        {
+            $query = $this->db->query("SELECT COUNT('mId') as countList
+                                        FROM models
+                                        WHERE productId = '$jl8'
+                                    ");
+            return $query->row();
+        }
+        
         
     }
