@@ -139,15 +139,6 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
-                                                        <td><input type="text" name="" id="" class="id"></td>
-                                                        <td><input type="text" name="" id="" class="company"></td>
-                                                        <td><input type="text" name="" id="" class="name"></td>
-                                                        <td><input type="text" name="" id="" class="price"></td>
-                                                        <td><input type="text" name="" id="" class="action"></td>
-                                                    </tr>
-                                                </tbody>
-                                                <tbody>
                                                     <?php 
                                                         $i = 0;
                                                         foreach ($allModels as $model): 
